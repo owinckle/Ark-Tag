@@ -1,4 +1,4 @@
-[![GitHub version](https://badge.fury.io/gh/owinckle%2Fark-tag.svg)](https://badge.fury.io/gh/owinckle%2Fark-tag)
+[![GitHub version](https://badge.fury.io/gh/owinckle%2Fark-tag.svg)]
 
 # Ark Tag
 Ark Tag is a desktop application to help businesses generate product tags from an .xslx database.
@@ -11,4 +11,4 @@ Ark Tag is a desktop application to help businesses generate product tags from a
 - Wait On
 
 ## Packages
-- read-excel-files
+- read-excel-files(https://www.npmjs.com/package/read-excel-file)
