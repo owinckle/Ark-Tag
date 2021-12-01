@@ -1,0 +1,43 @@
+:root {
+	--dark-primary: #12141d;
+	--dark-secondary: #20222e;
+	--dark-text: #f1f1f1;
+}
+
+.dark.wrapper {
+    background-color: var(--dark-primary);
+	color: var(--dark-text);
+}
+
+.dark .card,
+.dark .navbar,
+.dark .card-table {
+    background: var(--dark-secondary);
+}
+
+.dark .card .title,
+.dark .card-table .head {
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.dark .table-row {
+	margin-bottom: 10px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.dark .card-table .head input {
+	color: var(--dark-text);
+}
+
+.dark .card input[type="number"] {
+	color: var(--dark-text);
+}
+
+.dark .MuiSvgIcon-root.success:hover {
+	color: var(--dark-text);
+}
+
+.dark .MuiSvgIcon-root.danger:hover {
+	color: var(--dark-text);
+}
