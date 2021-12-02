@@ -11,6 +11,6 @@ Ark Tag is a desktop application to help businesses generate product tags from a
 - Wait On
 
 ## Packages
-- [read-excel-files](https://www.npmjs.com/package/read-excel-file)
+- [XLSX](https://www.npmjs.com/package/xlsx)
 
 Built with🧡by [Arkalys](http://www.arkalysapps.com).
