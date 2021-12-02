@@ -102,6 +102,7 @@ export default class App extends Component {
 
 	selectItem(item) {
 		const selectedItems = this.state.selectedItems;
+		console.log(item);
 
 		item["quantity"] = 0;
 		selectedItems.push(item);
@@ -132,6 +133,21 @@ export default class App extends Component {
 		const data = this.state.data;
 		const selectedItems = this.state.selectedItems;
 
+		let selectedItemList = [];
+		for (let i = 0; i < selectedItems.length; i++) {
+			selectedItemList.push(
+				<div key={i} className="table-row grid _3-grid">
+					<div>{selectedItems[i]["Référence"]}</div>
+					<input
+						type="number"
+						value={selectedItems[i].quantity}
+						onChange={(e) => this.quantityHandler(e, i)}
+					/>
+					<Delete className="center danger" onClick={() => this.removeItem(i)} />
+				</div>
+			)
+		}
+
 		let items = [];
 		if (data) {
 			for (let i = 0; i < data.length; i++) {
@@ -150,21 +166,6 @@ export default class App extends Component {
 						}
 					}
 			}
-		}
-
-		let selectedItemList = [];
-		for (let i = 0; i < selectedItems.length; i++) {
-			selectedItemList.push(
-				<div key={i} className="table-row grid _3-grid">
-					<div>{selectedItems[i]["Référence"]}</div>
-					<input
-						type="number"
-						value={selectedItems[i].quantity}
-						onChange={ (e) => this.quantityHandler(e, i)}
-					/>
-					<Delete className="center danger" onClick={() => this.removeItem(i)} />
-				</div>
-			)
 		}
 
 		return(
