@@ -1,0 +1,26 @@
+.test-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.97cm;
+    width: 5.25cm;
+    background: var(--secondary);
+    color: var(--text);
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    font-size: 10px;
+    user-select: none;
+}
+
+.tag-ref {
+    font-weight: 600;
+}
+
+.tag-name {
+    font-size: 12px;
+}
+
+.tag-label {
+    text-align: center;
+}

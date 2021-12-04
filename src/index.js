@@ -13,6 +13,7 @@ import Delete from '@mui/icons-material/Delete';
 // CSS
 import "./assets/app.css";
 import "./assets/dark.css";
+import "./assets/tags/test.css";
 
 // Components
 import Wrapper from "./layout/Wrapper";
@@ -23,8 +24,8 @@ import Card from "./components/Card/Card";
 import CardTable from "./components/Card/CardTable";
 
 export default class App extends Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 
 		this.state = {
 			darkMode: true,
@@ -192,7 +193,16 @@ export default class App extends Component {
 								</Grid>
 								{selectedItemList}
 							</Card>
+
 							<Card title="Étiquettes">
+								<div className="test-tag">
+									<div className="tag-ref">MAN0035</div>
+									<div className="tag-name">Bob</div>
+									<div className="tag-label">€ T1 TTC la pièce</div>
+									<div className="tag-label">À partir de 5 pièces € T2 TTC la pièce</div>
+									<div className="tag-label">À partir de 15 pièces € T3 HT la pièce</div>
+								</div>
+								<div onClick={() => window.open('')}>Generate</div>
 							</Card>
 						</Grid>
 
