@@ -2,6 +2,7 @@
 	--dark-primary: #12141d;
 	--dark-secondary: #20222e;
 	--dark-text: #f1f1f1;
+	--dark-paper: rgb(146, 146, 146);
 }
 
 .dark.wrapper {
@@ -40,4 +41,13 @@
 
 .dark .MuiSvgIcon-root.danger:hover {
 	color: var(--dark-text);
+}
+
+.dark .tags-modal {
+	background: var(--dark-secondary);
+}
+
+
+.dark .tags-container {
+	background: var(--dark-paper);
 }

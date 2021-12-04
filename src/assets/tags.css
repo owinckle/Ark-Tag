@@ -1,0 +1,56 @@
+.tags-modal {
+	height: calc(100vh - 50px);
+	background: var(--secondary);
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	z-index: 999;
+	overflow-y: scroll;
+	padding: 25px;
+	box-shadow: var(--simple-boxshadow);
+}
+
+.tags-container {
+	height: 29.8cm;
+	width: 21.1cm;
+	background: var(--paper);
+	left: 50%;
+	transform: translateX(-50%);
+	position: relative;
+}
+
+.tags-modal .head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.tags-modal .head .title {
+	font-size: 1.4rem;
+}
+
+.tags-container .row {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+
+.tags-container .tag {
+	width: 5.25cm;
+	height: 2.97cm;
+	text-align: center;
+	outline: 1px dotted #000;
+}
+
+.tags-container .tag .ref {
+	font-size: 12px;
+}
+
+.tags-container .tag .name {
+	font-size: 9px;
+}
+
+.tags-container .tag .label {
+	font-size: 10px;
+}

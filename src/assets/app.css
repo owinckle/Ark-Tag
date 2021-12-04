@@ -16,6 +16,7 @@ body {
 	--secondary: #fff;
 	--text: #2a3256;
 	--sub: #808080;
+	--paper: rgb(255, 255, 255);
 
 	/* Colors */
 	--danger: #ff4b54;

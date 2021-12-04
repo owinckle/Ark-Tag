@@ -9,11 +9,12 @@ import DarkMode from '@mui/icons-material/DarkMode';
 import LightMode from '@mui/icons-material/LightMode';
 import Add from '@mui/icons-material/Add';
 import Delete from '@mui/icons-material/Delete';
+import Close from '@mui/icons-material/Close';
 
 // CSS
 import "./assets/app.css";
+import "./assets/tags.css";
 import "./assets/dark.css";
-import "./assets/tags/test.css";
 
 // Components
 import Wrapper from "./layout/Wrapper";
@@ -22,6 +23,7 @@ import Grid from "./layout/Grid";
 import Navbar from "./components/Navbar/Navbar";
 import Card from "./components/Card/Card";
 import CardTable from "./components/Card/CardTable";
+import Tags from "./components/Tags/Tags";
 
 export default class App extends Component {
 	constructor() {
@@ -31,7 +33,8 @@ export default class App extends Component {
 			darkMode: true,
 			data: null,
 			search: "",
-			selectedItems: []
+			selectedItems: [],
+			tagsPreview: false
 		}
 
 		this.updateState	= this.updateState.bind(this);
@@ -42,6 +45,7 @@ export default class App extends Component {
 		this.selectItem 	= this.selectItem.bind(this);
 		this.removeItem = this.removeItem.bind(this);
 		this.quantityHandler = this.quantityHandler.bind(this);
+		this.tagsPreviewSwitch = this.tagsPreviewSwitch.bind(this);
 	}
 
 	updateState(target, value) {
@@ -130,6 +134,14 @@ export default class App extends Component {
 		});
 	}
 
+	tagsPreviewSwitch() {
+		let tagsPreview = this.state.tagsPreview;
+
+		this.setState({
+			tagsPreview: tagsPreview ? false : true
+		});
+	}
+
 	render() {
 		const data = this.state.data;
 		const selectedItems = this.state.selectedItems;
@@ -202,7 +214,7 @@ export default class App extends Component {
 									<div className="tag-label">À partir de 5 pièces € T2 TTC la pièce</div>
 									<div className="tag-label">À partir de 15 pièces € T3 HT la pièce</div>
 								</div>
-								<div onClick={() => window.open('')}>Generate</div>
+								<div onClick={this.tagsPreviewSwitch}>Generate</div>
 							</Card>
 						</Grid>
 
@@ -218,6 +230,7 @@ export default class App extends Component {
 							{items}
 						</CardTable>
 					</Container>
+					<Tags icon={<Close/>} />
 				</Wrapper>
 			</React.StrictMode>
 		)
