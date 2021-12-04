@@ -15,7 +15,7 @@ body {
 	--primary: #f7f8fa;
 	--secondary: #fff;
 	--text: #2a3256;
-	--sub: #cdcdcd;
+	--sub: #808080;
 
 	/* Colors */
 	--danger: #ff4b54;
@@ -152,12 +152,10 @@ input {
 }
 
 .MuiSvgIcon-root.success:hover {
-	color: var(--text);
 	background: var(--success);
 }
 
 .MuiSvgIcon-root.danger:hover {
-	color: var(--text);
 	background: var(--danger);
 }
 
@@ -202,6 +200,7 @@ input {
 	background: var(--brand);
 	padding: 5px;
 	border-radius: 5px;
+	color: #fff;
 }
 
 .label.center {

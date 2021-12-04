@@ -134,7 +134,9 @@ export default class App extends Component {
 		const selectedItems = this.state.selectedItems;
 
 		let selectedItemList = [];
+		let selectedRef = [];
 		for (let i = 0; i < selectedItems.length; i++) {
+			selectedRef.push(selectedItems[i]["Référence"]);
 			selectedItemList.push(
 				<div key={i} className="table-row grid _3-grid">
 					<div>{selectedItems[i]["Référence"]}</div>
@@ -151,7 +153,8 @@ export default class App extends Component {
 		let items = [];
 		if (data) {
 			for (let i = 0; i < data.length; i++) {
-					if (data[i].Référence) {
+				if (data[i].Référence) {
+					if (!selectedRef.includes(data[i].Référence)) {
 						if (data[i]["Référence"].toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search == "") {
 							items.push(
 								<div key={i} className="table-row grid _6-grid">
@@ -165,6 +168,7 @@ export default class App extends Component {
 							);
 						}
 					}
+				}
 			}
 		}
 
