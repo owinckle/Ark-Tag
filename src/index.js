@@ -24,6 +24,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Card from "./components/Card/Card";
 import CardTable from "./components/Card/CardTable";
 import Tags from "./components/Tags/Tags";
+import DefaultButton from "./components/Buttons/DefaultButton";
 
 export default class App extends Component {
 	constructor() {
@@ -34,7 +35,8 @@ export default class App extends Component {
 			data: null,
 			search: "",
 			selectedItems: [],
-			tagsPreview: false
+			tagsPreview: false,
+			selectedTemplate: "Default"
 		}
 
 		this.updateState	= this.updateState.bind(this);
@@ -207,14 +209,7 @@ export default class App extends Component {
 							</Card>
 
 							<Card title="Étiquettes">
-								<div className="test-tag">
-									<div className="tag-ref">MAN0035</div>
-									<div className="tag-name">Bob</div>
-									<div className="tag-label">€ T1 TTC la pièce</div>
-									<div className="tag-label">À partir de 5 pièces € T2 TTC la pièce</div>
-									<div className="tag-label">À partir de 15 pièces € T3 HT la pièce</div>
-								</div>
-								<div onClick={this.tagsPreviewSwitch}>Generate</div>
+								<DefaultButton action={this.tagsPreviewSwitch} label="Aperçu" />
 							</Card>
 						</Grid>
 
@@ -230,7 +225,13 @@ export default class App extends Component {
 							{items}
 						</CardTable>
 					</Container>
-					<Tags icon={<Close/>} />
+
+					<Tags
+						icon={<Close onClick={this.tagsPreviewSwitch}/>}
+						show={this.state.tagsPreview}
+						tags={this.state.selectedItems}
+						template={this.state.selectedTemplate}
+					/>
 				</Wrapper>
 			</React.StrictMode>
 		)

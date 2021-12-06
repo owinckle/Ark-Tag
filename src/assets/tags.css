@@ -1,17 +1,23 @@
 .tags-modal {
 	height: calc(100vh - 50px);
 	background: var(--secondary);
-	position: absolute;
+	position: fixed;
 	right: 0px;
 	top: 0px;
 	z-index: 999;
 	overflow-y: scroll;
 	padding: 25px;
 	box-shadow: var(--simple-boxshadow);
+	right: -25cm;
+	transition: right .3s ease;
+}
+
+.tags-modal.show {
+	right: 0px;
 }
 
 .tags-container {
-	height: 29.8cm;
+	min-height: 29.8cm;
 	width: 21.1cm;
 	background: var(--paper);
 	left: 50%;
@@ -32,8 +38,9 @@
 
 .tags-container .row {
 	display: flex;
-	justify-content: space-between;
 	position: relative;
+	flex-wrap: wrap;
+	left: 2px;
 }
 
 .tags-container .tag {

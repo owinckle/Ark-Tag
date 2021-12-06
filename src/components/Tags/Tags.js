@@ -1,310 +1,36 @@
 export default function Tags(props) {
+    const modalClasses = props.show ? "tags-modal show" : "tags-modal";
+    const tags = props.tags;
+    const tagClass = props.template;
+
+    let tagList = [];
+    for (let i = 0; i < tags.length; i++) {
+        for (let y = 0; y < tags[i].quantity; y++) {
+            tagList.push(
+                <div key={i + y}className={"tag " + tagClass}>
+                    <div className="ref">{tags[i]["Référence"]}</div>
+                    <div className="name">{tags[i]["Désignation"]}</div>
+                    <div className="label">{tags[i]["Tarif 1"]}€ TTC la pièce</div>
+                    <div className="label">À partir de 5 pièces {tags[i]["Tarif 2"]}€ T2 TTC la pièce</div>
+                    <div className="label">À partir de 15 pièces {tags[i]["Tarif pro"]}€ T3 TTC la pièce</div>
+                </div>
+            );
+        }
+    }
+
+    const printPDF = () => {
+        // const ipcRenderer = require("electron").ipcRenderer; Figure out what the fuck is going on here
+    }
+
     return (
-        <div className="tags-modal">
+        <div className={modalClasses}>
             <div className="head">
-                <div className="title">Aperçu</div>
+                <div className="button" onClick={printPDF}>Générer</div>
                 { props.icon }
             </div>
             <div className="tags-container">
                 <div className="row">
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
-                    <div className="tag">
-                        <div className="ref">MAN0042</div>
-                        <div className="name">Chaines</div>
-                        <div className="label">€ 0.32 TTC la pièce</div>
-                        <div className="label">À partir de 5 pièces € T2 TTC la pièce</div>
-                        <div className="label">À partir de 15 pièces € T3 TTC la pièce</div>
-                    </div>
+                    {tagList}
                 </div>
             </div>
         </div>

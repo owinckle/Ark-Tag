@@ -57,6 +57,7 @@ input {
 	color: var(--text);
 	transition: background-color .3s ease;
 	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .main {
@@ -245,4 +246,19 @@ input {
 .card input[type="number"]::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
+}
+
+/* Buttons */
+.button {
+	color: #fff;
+	padding: 10px 15px;
+	background: var(--brand);
+	cursor: pointer;
+	width: fit-content;
+	transition: color .3s ease, background .3s ease;
+}
+
+.button:hover {
+	background: #fff;
+	color: var(--brand);
 }
