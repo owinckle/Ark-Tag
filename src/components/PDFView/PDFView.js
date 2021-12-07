@@ -17,6 +17,12 @@ export default class PDFView extends Component {
             this.externalWindow.document.body.appendChild(this.containerEl);
             this.externalWindow.document.body.style.margin = "0px";
             this.externalWindow.document.body.style.overflowX = "hidden";
+
+            var style = this.externalWindow.document.createElement("style");
+            style.type = "text/css";
+            style.appendChild(this.externalWindow.document.createTextNode('@page{margin:0}'));
+            this.externalWindow.document.getElementsByTagName('head')[0].appendChild(style);
+
             this.externalWindow.onunload = () => this.props.onClose();
         }
     }

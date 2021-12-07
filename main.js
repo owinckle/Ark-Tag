@@ -1,4 +1,5 @@
 const {app, BrowserWindow, ipcMain} = require("electron")
+const fs = require("fs")
 const path = require("path")
 
 function createWindow () {
@@ -22,7 +23,31 @@ function createWindow () {
 			event.newGuest = new BrowserWindow(options);
 			event.newGuest.setMenuBarVisibility(false);
 			event.newGuest.setResizable(false);
-			event.newGuest.setTitle("PDF")
+			event.newGuest.setTitle("PDF");
+
+			var pdfOptions = {
+					landscape: false,
+					silent: true,
+					marginsType: 0,
+					printBackground: false,
+					printSelectionOnly: false,
+					pageSize: "A4"
+			}
+
+			event.newGuest.webContents.on("did-finish-load", () => {
+				event.newGuest.webContents.print(pdfOptions, (err, data) => {
+					if (err) {
+						console.log(err);
+						return;
+					}
+					
+					try {
+						fs.writeFileSync("./test.pdf", data);
+					} catch(err) {
+						console.log(err);
+					}
+				});
+			});
 		}
 	});
 }
