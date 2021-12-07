@@ -18,14 +18,10 @@ export default function Tags(props) {
         }
     }
 
-    const printPDF = () => {
-        // const ipcRenderer = require("electron").ipcRenderer; Figure out what the fuck is going on here
-    }
-
     return (
         <div className={modalClasses}>
             <div className="head">
-                <div className="button" onClick={printPDF}>Générer</div>
+                <div className="title">Aperçu</div>
                 { props.icon }
             </div>
             <div className="tags-container">

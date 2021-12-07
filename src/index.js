@@ -109,7 +109,6 @@ export default class App extends Component {
 
 	selectItem(item) {
 		const selectedItems = this.state.selectedItems;
-		console.log(item);
 
 		item["quantity"] = 0;
 		selectedItems.push(item);
@@ -210,6 +209,7 @@ export default class App extends Component {
 
 							<Card title="Étiquettes">
 								<DefaultButton action={this.tagsPreviewSwitch} label="Aperçu" />
+								<DefaultButton action={() => this.setState({ pageWindow: true })} label="Générer" />
 							</Card>
 						</Grid>
 
