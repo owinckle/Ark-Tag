@@ -25,6 +25,7 @@ import Card from "./components/Card/Card";
 import CardTable from "./components/Card/CardTable";
 import Tags from "./components/Tags/Tags";
 import DefaultButton from "./components/Buttons/DefaultButton";
+import PDFView from "./components/PDFView/PDFView";
 
 export default class App extends Component {
 	constructor() {
@@ -36,10 +37,10 @@ export default class App extends Component {
 			search: "",
 			selectedItems: [],
 			tagsPreview: false,
-			selectedTemplate: "Default"
+			selectedTemplate: "Default",
+			pdfView: false
 		}
 
-		this.updateState	= this.updateState.bind(this);
 		this.lightSwitch	= this.lightSwitch.bind(this);
 		this.import			= this.import.bind(this);
 		this.formatData		= this.formatData.bind(this);
@@ -48,12 +49,6 @@ export default class App extends Component {
 		this.removeItem = this.removeItem.bind(this);
 		this.quantityHandler = this.quantityHandler.bind(this);
 		this.tagsPreviewSwitch = this.tagsPreviewSwitch.bind(this);
-	}
-
-	updateState(target, value) {
-		this.setState({
-			[target]: value
-		});
 	}
 
 	changeHandler(e) {
@@ -209,7 +204,7 @@ export default class App extends Component {
 
 							<Card title="Étiquettes">
 								<DefaultButton action={this.tagsPreviewSwitch} label="Aperçu" />
-								<DefaultButton action={() => this.setState({ pageWindow: true })} label="Générer" />
+								<DefaultButton action={() => this.setState({ pdfView: true })} label="Générer" />
 							</Card>
 						</Grid>
 
@@ -233,6 +228,7 @@ export default class App extends Component {
 						template={this.state.selectedTemplate}
 					/>
 				</Wrapper>
+				{this.state.pdfView ? <PDFView onClose={() => this.setState({pdfView: false})} tags={this.state.selectedItems} /> : null}
 			</React.StrictMode>
 		)
 	}

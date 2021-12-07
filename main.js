@@ -9,6 +9,22 @@ function createWindow () {
 
 	mainWindow.setMenuBarVisibility(false)
 	mainWindow.loadURL("http://localhost:3000")
+
+	mainWindow.webContents.on("new-window", (event, url, frameName, disposition, options, additionalFeatures) => {
+		if (frameName === "PDFView") {
+			event.preventDefault();
+			Object.assign(options, {
+				parent: mainWindow,
+				width: 814,
+				height: 900
+			});
+
+			event.newGuest = new BrowserWindow(options);
+			event.newGuest.setMenuBarVisibility(false);
+			event.newGuest.setResizable(false);
+			event.newGuest.setTitle("PDF")
+		}
+	});
 }
 
 app.whenReady().then(() => {
