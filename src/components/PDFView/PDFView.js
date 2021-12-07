@@ -35,7 +35,7 @@ export default class PDFView extends Component {
             "display": "flex",
             "position": "relative",
             "flex-wrap": "wrap",
-            "left": "2px",
+            "left": "1px",
             "font-family": '"Calibri", sans-serif',
             "letter-spacing": "1px"
         }

@@ -15,9 +15,7 @@ function createWindow () {
 		if (frameName === "PDFView") {
 			event.preventDefault();
 			Object.assign(options, {
-				parent: mainWindow,
-				width: 814,
-				height: 900
+				show: false
 			});
 
 			event.newGuest = new BrowserWindow(options);
@@ -35,17 +33,8 @@ function createWindow () {
 			}
 
 			event.newGuest.webContents.on("did-finish-load", () => {
-				event.newGuest.webContents.print(pdfOptions, (err, data) => {
-					if (err) {
-						console.log(err);
-						return;
-					}
-					
-					try {
-						fs.writeFileSync("./test.pdf", data);
-					} catch(err) {
-						console.log(err);
-					}
+				event.newGuest.webContents.print(pdfOptions, () => {
+					event.newGuest.close();
 				});
 			});
 		}

@@ -51,3 +51,11 @@
 .dark .tags-container {
 	background: var(--dark-paper);
 }
+
+.dark select {
+	color: var(--dark-text);
+}
+
+.dark option {
+	background: var(--dark-secondary);
+}

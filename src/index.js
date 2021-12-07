@@ -203,8 +203,17 @@ export default class App extends Component {
 							</Card>
 
 							<Card title="Étiquettes">
-								<DefaultButton action={this.tagsPreviewSwitch} label="Aperçu" />
-								<DefaultButton action={() => this.setState({ pdfView: true })} label="Générer" />
+								<div className="template-select">Template</div>
+								<select className="template">
+									<option value="1">Chaines</option>
+									<option value="2">Gros</option>
+									<option value="3">Lots</option>
+									<option value="4">Bacs</option>
+								</select>
+								<Wrapper classes="flex">
+									<DefaultButton action={this.tagsPreviewSwitch} label="Aperçu" />
+									<DefaultButton action={() => this.setState({ pdfView: true })} label="Générer" />
+								</Wrapper>
 							</Card>
 						</Grid>
 
