@@ -4,7 +4,7 @@ import { render } from "react-dom";
 import * as XLSX from "xlsx";
 
 // Material Icons
-import Download from '@mui/icons-material/Download';
+import Upload from '@mui/icons-material/Upload';
 import DarkMode from '@mui/icons-material/DarkMode';
 import LightMode from '@mui/icons-material/LightMode';
 import Add from '@mui/icons-material/Add';
@@ -188,7 +188,7 @@ export default class App extends Component {
 						<div>v1.0.0</div>
 						<div className="icon-div">
 							{this.state.darkMode ? <DarkMode onClick={this.lightSwitch} /> : <LightMode onClick={this.lightSwitch} />}
-							<Download onClick={ this.import } />
+							<Upload onClick={ this.import } />
 						</div>
 					</Navbar>
 					<Container>

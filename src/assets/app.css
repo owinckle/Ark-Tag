@@ -170,7 +170,7 @@ option {
 /* Material Icons */
 .MuiSvgIcon-root {
 	cursor: pointer;
-	transition: color .3s ease;
+	transition: color .3s ease !important;
 }
 
 .MuiSvgIcon-root:hover {
@@ -179,7 +179,7 @@ option {
 
 .MuiSvgIcon-root.success,
 .MuiSvgIcon-root.danger {
-	transition: background .3s ease;
+	transition: background .3s ease !important;
 }
 
 .MuiSvgIcon-root.success:hover {
