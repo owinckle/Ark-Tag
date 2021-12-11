@@ -59,3 +59,12 @@
 .dark option {
 	background: var(--dark-secondary);
 }
+
+.dark .modal {
+	background: var(--dark-secondary);
+}
+
+.dark .modal .body input {
+	color: var(--dark-text);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}

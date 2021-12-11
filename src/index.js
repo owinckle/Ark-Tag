@@ -10,6 +10,7 @@ import LightMode from '@mui/icons-material/LightMode';
 import Add from '@mui/icons-material/Add';
 import Delete from '@mui/icons-material/Delete';
 import Close from '@mui/icons-material/Close';
+import Edit from '@mui/icons-material/Edit';
 
 // CSS
 import "./assets/app.css";
@@ -26,6 +27,10 @@ import CardTable from "./components/Card/CardTable";
 import Tags from "./components/Tags/Tags";
 import DefaultButton from "./components/Buttons/DefaultButton";
 import PDFView from "./components/PDFView/PDFView";
+import TemplateChaines from "./components/Templates/TemplateChaines";
+import TemplateGros from "./components/Templates/TemplateGros";
+import TemplateLots from "./components/Templates/TemplateLots";
+import TemplateBacs from "./components/Templates/TemplateBacs";
 
 export default class App extends Component {
 	constructor() {
@@ -37,8 +42,35 @@ export default class App extends Component {
 			search: "",
 			selectedItems: [],
 			tagsPreview: false,
-			selectedTemplate: "Default",
-			pdfView: false
+			selectedTemplate: "chaines",
+			pdfView: false,
+			templateChaines: {
+				ref: "{ref}",
+				produit: "{produit}",
+				t1: "{t1}€ TTC la pièce",
+				t2: "À partir de 5 pièces {t2}€ T2 TTC la pièce",
+				t3: "À partir de 15 pièces {t3}€ T3 TTC la pièce"
+			},
+			templateGros: {
+				ref: "{ref}",
+				produit: "{produit}",
+				t1: "{t1}€ TTC la pièce",
+				t2: "À partir de 5 pièces {t2}€ T2 TTC la pièce",
+				t3: "À partir de 15 pièces {t3}€ T3 TTC la pièce"
+			},
+			templateLots: {
+				ref: "{ref}",
+				produit: "{produit}",
+				t1: "{t1}€ TTC la pièce",
+			},
+			templateBacs: {
+				ref: "{ref}",
+				produit: "{produit}",
+				t1: "{t1}€ TTC la pièce",
+				t2: "À partir de 5 pièces {t2}€ T2 TTC la pièce",
+				t3: "À partir de 15 pièces {t3}€ T3 TTC la pièce"
+			},
+			editTemplate: false
 		}
 
 		this.lightSwitch	= this.lightSwitch.bind(this);
@@ -49,6 +81,13 @@ export default class App extends Component {
 		this.removeItem = this.removeItem.bind(this);
 		this.quantityHandler = this.quantityHandler.bind(this);
 		this.tagsPreviewSwitch = this.tagsPreviewSwitch.bind(this);
+		this.updateState	= this.updateState.bind(this);
+	}
+
+	updateState(target, value) {
+		this.setState({
+			[target]: value
+		});
 	}
 
 	changeHandler(e) {
@@ -181,6 +220,15 @@ export default class App extends Component {
 			}
 		}
 
+		let templateData = this.state.templateChaines;
+		if (this.state.selectedTemplate == "gros") {
+			templateData = this.state.templateGros;
+		} else if (this.state.selectedTemplate == "lots") {
+			templateData = this.state.templateLots;
+		} else if (this.state.selectedTemplate == "bacs") {
+			templateData = this.state.templateBacs;
+		}
+
 		return(
 			<React.StrictMode>
 				<Wrapper classes={ this.state.darkMode ? "wrapper dark" : "wrapper"}>
@@ -204,12 +252,15 @@ export default class App extends Component {
 
 							<Card title="Étiquettes">
 								<div className="template-select">Template</div>
-								<select className="template">
-									<option value="1">Chaines</option>
-									<option value="2">Gros</option>
-									<option value="3">Lots</option>
-									<option value="4">Bacs</option>
-								</select>
+								<Wrapper classes="flex template-select-container">
+									<select className="template" name="selectedTemplate" value={this.state.selectedTemplate} onChange={this.changeHandler}>
+										<option value="chaines">Chaines</option>
+										<option value="gros">Gros</option>
+										<option value="lots">Lots</option>
+										<option value="bacs">Bacs</option>
+									</select>
+									<Edit onClick={() => this.setState({editTemplate: true})} />
+								</Wrapper>
 								<Wrapper classes="flex">
 									<DefaultButton action={this.tagsPreviewSwitch} label="Aperçu" />
 									<DefaultButton action={() => this.setState({ pdfView: true })} label="Générer" />
@@ -235,9 +286,50 @@ export default class App extends Component {
 						show={this.state.tagsPreview}
 						tags={this.state.selectedItems}
 						template={this.state.selectedTemplate}
+						templateData={templateData}
 					/>
+
+					{this.state.editTemplate && this.state.selectedTemplate == "chaines" ?
+						<TemplateChaines
+							onClose={() => this.setState({editTemplate: false})}
+							data={templateData}
+							save={this.updateState} />
+						: null
+					}
+
+					{this.state.editTemplate && this.state.selectedTemplate == "gros" ?
+						<TemplateGros
+							onClose={() => this.setState({ editTemplate: false })}
+							data={templateData}
+							save={this.updateState} />
+						: null
+					}
+
+					{this.state.editTemplate && this.state.selectedTemplate == "lots" ?
+						<TemplateLots
+							onClose={() => this.setState({ editTemplate: false })}
+							data={templateData}
+							save={this.updateState} />
+						: null
+					}
+
+					{this.state.editTemplate && this.state.selectedTemplate == "bacs" ?
+						<TemplateBacs
+							onClose={() => this.setState({ editTemplate: false })}
+							data={templateData}
+							save={this.updateState} />
+						: null
+					}
 				</Wrapper>
-				{this.state.pdfView ? <PDFView onClose={() => this.setState({pdfView: false})} tags={this.state.selectedItems} /> : null}
+				{this.state.pdfView ?
+					<PDFView
+						onClose={() => this.setState({pdfView: false})}
+						tags={this.state.selectedItems}
+						data={templateData}
+						template={this.state.selectedTemplate}
+					/>
+					: null
+				}
 			</React.StrictMode>
 		)
 	}

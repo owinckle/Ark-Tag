@@ -7,6 +7,7 @@ body {
 	font-weight: 400;
 	letter-spacing: 1px;
 	color: var(--text);
+	user-select: none;
 }
 
 :root {
@@ -129,6 +130,18 @@ select {
 }
 
 select.template {
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.template-select-container .MuiSvgIcon-root {
+	font-size: 20px;
+	position: relative;
+	top: -2px;
+}
+
+.template-select-container {
+	align-items: center;
 	margin-bottom: 15px;
 }
 
@@ -290,4 +303,45 @@ option {
 .button:hover {
 	background: #fff;
 	color: var(--brand);
+}
+
+/* Modal */
+.modal {
+	width: 350px;
+	background: var(--secondary);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: var(--simple-boxshadow);
+	padding: 15px;
+}
+
+.modal .header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.modal .body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.modal .body input {
+	width: calc(100% - 30px);
+	margin-bottom: 15px;
+	background: transparent;
+	border: none;
+	color: var(--text);
+	padding: 10px 15px;
+	border-radius: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	transition: border .3s ease;
+}
+
+.modal .body input:focus {
+	border: 1px solid var(--brand) !important;
 }
