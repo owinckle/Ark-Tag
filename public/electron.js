@@ -29,7 +29,7 @@ function createWindow() {
                 landscape: false,
                 silent: true,
                 marginsType: 0,
-                printBackground: false,
+                printBackground: true,
                 printSelectionOnly: false,
                 pageSize: "A4"
             }

@@ -113,7 +113,7 @@ export default class App extends Component {
 				const wb = XLSX.read(bstr, {type : "binary"});
 				const wsname = wb.SheetNames[0];
 				const ws = wb.Sheets[wsname];
-				const data = XLSX.utils.sheet_to_csv(ws, { header: 1});
+				const data = XLSX.utils.sheet_to_json(ws, { header: 1});
 				this.setState({
 					data: this.formatData(data)
 				});
@@ -124,27 +124,25 @@ export default class App extends Component {
 		input.click();
 	}
 
-	formatData(csv) {
-		var lines = csv.split("\n");
-		var result = [];
-		var headers = lines[0].split(",");
-		
-		for (var i = 1; i < lines.length; i++) {
-			var obj = {};
-			var currentline = lines[i].split(",");
-			
-			for (var j = 0; j < headers.length; j++) {
-				obj[headers[j].trim()] = currentline[j];
-			}
-			result.push(obj);
+	formatData(data) {
+		let newData = [];
+
+		for (let i = 1; i < data.length - 2; i += 3) {
+			newData.push({
+				ref: data[i][0],
+				name: data[i][1],
+				quantites: [data[i][2], data[i + 1][2], data[i + 2][2]],
+				prices: [data[i][3], data[i + 1][3], data[i + 2][3]],
+			});
 		}
-		return result;
+
+		return (newData);
 	}
 
 	selectItem(item) {
 		const selectedItems = this.state.selectedItems;
 
-		item["quantity"] = 0;
+		item.quantity = 0;
 		selectedItems.push(item);
 		this.setState({
 			selectedItems: selectedItems
@@ -184,10 +182,10 @@ export default class App extends Component {
 		let selectedItemList = [];
 		let selectedRef = [];
 		for (let i = 0; i < selectedItems.length; i++) {
-			selectedRef.push(selectedItems[i]["Référence"]);
+			selectedRef.push(selectedItems[i]["ref"]);
 			selectedItemList.push(
 				<div key={i} className="table-row grid _3-grid">
-					<div>{selectedItems[i]["Référence"]}</div>
+					<div>{selectedItems[i]["ref"]}</div>
 					<input
 						type="number"
 						value={selectedItems[i].quantity}
@@ -201,20 +199,18 @@ export default class App extends Component {
 		let items = [];
 		if (data) {
 			for (let i = 0; i < data.length; i++) {
-				if (data[i].Référence) {
-					if (!selectedRef.includes(data[i].Référence)) {
-						if (data[i]["Référence"].toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search == "") {
-							items.push(
-								<div key={i} className="table-row grid _6-grid">
-									<div>{data[i]["Référence"]}</div>
-									<div>{data[i]["Désignation"]}</div>
-									<div>{data[i]["Tarif 1"]}</div>
-									<div>{data[i]["Tarif 2"]}</div>
-									<div>{data[i]["Tarif pro"]}</div>
-									<Add className="center success" onClick={() => this.selectItem(data[i])} />
-								</div>
-							);
-						}
+				if (!selectedRef.includes(data[i]["ref"])) {
+					if (data[i]["ref"].toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search == "") {
+						items.push(
+							<div key={i} className="table-row grid _6-grid">
+								<div>{data[i]["ref"]}</div>
+								<div>{data[i]["name"]}</div>
+								<div>{data[i]["prices"][0]}</div>
+								<div>{data[i]["prices"][1]}</div>
+								<div>{data[i]["prices"][2]}</div>
+								<Add className="center success" onClick={() => this.selectItem(data[i])} />
+							</div>
+						);
 					}
 				}
 			}
