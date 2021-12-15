@@ -2,6 +2,7 @@
 
 # Ark Tag
 Ark Tag is a desktop application to help businesses generate product tags from an .xslx database.
+Also called "El Etiquetor" for some reasons.
 
 ## Stack
 - Node
