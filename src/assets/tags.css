@@ -47,6 +47,10 @@
 	outline: none;
 }
 
+.tags-container .row.chaines {
+	left: 2px;
+}
+
 .tags-container .row.gros {
 	padding: 1.51cm 0.72cm;
 	justify-content: space-between;
@@ -73,6 +77,10 @@
 
 .tags-container .tag .label.highlight {
 	background: #ffff00;
+	width: fit-content;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 /* Chaines */

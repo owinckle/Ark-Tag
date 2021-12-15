@@ -345,3 +345,31 @@ option {
 .modal .body input:focus {
 	border: 1px solid var(--brand) !important;
 }
+
+.modal .input-container {
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
+
+.modal .input-container .metric {
+	margin-bottom: 15px;
+	position: absolute;
+	right: 30px;
+	font-size: 14px;
+	color: var(--sub);
+}
+
+.modal .input-container input[type="number"] {
+	width: 50px;
+}
+
+.modal .input-container input[type="text"] {
+	margin-right: 15px;
+}
+
+.modal .input-container input[type="number"]::-webkit-outer-spin-button,
+.modal .input-container input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}

@@ -86,34 +86,35 @@ export default class PDFView extends Component {
     render() {
         const tags = this.props.tags;
         const template = this.props.template;
+        const data = this.props.data;
 
         let tagList = [];
         for (let i = 0; i < tags.length; i++) {
             for (let y = 0; y < tags[i].quantity; y++) {
                 if (template == "chaines" || template == "gros" || template == "bacs") {
-                    let ref = this.props.data.ref.replace("{ref}", tags[i]["ref"]);
-                    let produit = this.props.data.produit.replace("{produit}", tags[i]["name"]);
-                    let t1 = this.props.data.t1.replace("{t1}", tags[i]["prices"][0]);
-                    let t2 = this.props.data.t2.replace("{t2}", tags[i]["prices"][1]);
-                    let t3 = this.props.data.t3.replace("{t3}", tags[i]["prices"][2]);
+                    let ref = data.ref.replace("{ref}", tags[i]["ref"]);
+                    let produit = data.produit.replace("{produit}", tags[i]["name"]);
+                    let t1 = data.t1.replace("{t1}", tags[i]["prices"][0]);
+                    let t2 = data.t2.replace("{t2}", tags[i]["prices"][1]);
+                    let t3 = data.t3.replace("{t3}", tags[i]["prices"][2]);
                     tagList.push(
                         <div key={i + y} className={"tag " + this.props.template}>
-                            <div className="ref">{ref}</div>
-                            <div className="name">{produit}</div>
-                            <div className="label">{t1}</div>
-                            <div className="label">{t2}</div>
-                            <div className="label highlight">{t3}</div>
+                            <div style={{ fontSize: data.refFont + "px" }} className="ref">{ref}</div>
+                            <div style={{ fontSize: data.prodFont + "px" }} className="name">{produit}</div>
+                            <div style={{ fontSize: data.labelFont + "px" }} className="label">{t1}</div>
+                            <div style={{ fontSize: data.labelFont + "px" }} className="label">{t2}</div>
+                            <div style={{ fontSize: data.labelFont + "px" }} className="label highlight">{t3}</div>
                         </div>
                     );
                 } else {
-                    let ref = this.props.data.ref.replace("{ref}", tags[i]["ref"]);
-                    let produit = this.props.data.produit.replace("{produit}", tags[i]["name"]);
-                    let t1 = this.props.data.t1.replace("{t1}", tags[i]["prices"][0]);
+                    let ref = data.ref.replace("{ref}", tags[i]["ref"]);
+                    let produit = data.produit.replace("{produit}", tags[i]["name"]);
+                    let t1 = data.t1.replace("{t1}", tags[i]["prices"][0]);
                     tagList.push(
                         <div key={i + y} className={"tag " + this.props.template}>
-                            <div className="ref">{ref}</div>
-                            <div className="name">{produit}</div>
-                            <div className="label">{t1}</div>
+                            <div style={{ fontSize: data.refFont + "px" }} className="ref">{ref}</div>
+                            <div style={{ fontSize: data.prodFont + "px" }} className="name">{produit}</div>
+                            <div style={{ fontSize: data.labelFont + "px" }} className="label">{t1}</div>
                         </div>
                     );
                 }
