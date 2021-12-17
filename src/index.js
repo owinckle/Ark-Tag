@@ -38,7 +38,7 @@ export default class App extends Component {
 		super();
 
 		this.state = {
-			darkMode: true,
+			darkMode: false,
 			data: null,
 			search: "",
 			selectedItems: [],

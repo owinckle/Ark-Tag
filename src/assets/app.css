@@ -13,8 +13,8 @@ body {
 :root {
 	--brand: #573bff;
 	--brand-transparent: #eeedfd;
-	--primary: #f7f8fa;
-	--secondary: #fff;
+	--primary: #f6f6f6;
+	--secondary: #ececec;
 	--text: #2a3256;
 	--sub: #808080;
 	--paper: rgb(255, 255, 255);
@@ -302,7 +302,7 @@ option {
 }
 
 .button:hover {
-	background: #fff;
+	background: var(--secondary);
 	color: var(--brand);
 }
 
