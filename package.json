@@ -33,7 +33,11 @@
     "start": "concurrently \"cross-env npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "build": {
-    "appId": "com.arkalys.arktag",
+    "appId": "com.arkalys.etiquetor",
+    "productName": "El Etiquetor",
+    "nsis": {
+      "uninstallDisplayName": "El Etiquetor"
+    },
     "files": [
       "build/**/*",
       "node_modules/**/*"

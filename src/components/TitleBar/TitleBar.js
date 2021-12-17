@@ -25,7 +25,10 @@ export default function TitleBar(props) {
 
     return (
         <div className="title-bar">
-            <div className="app-name">{props.title}</div>
+            <div className="title">
+                <img src={props.favicon} />
+                <div className="app-name">{props.title}</div>
+            </div>
             <div className="buttons">
                 <div className="btn-container" onClick={minimizeApp}>
                     <svg aria-hidden="false" width="12" height="12" viewBox="0 0 12 12"><rect fill="currentColor" width="10" height="1" x="1" y="6"></rect></svg>

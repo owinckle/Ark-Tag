@@ -390,7 +390,7 @@ option {
 }
 
 .title-bar .app-name {
-	margin-left: 15px;
+	margin-left: 5px;
 }
 
 .title-bar .buttons {
@@ -415,4 +415,16 @@ option {
 
 .title-bar .buttons .btn-container.close:hover {
 	background: var(--danger);
+}
+
+.title-bar .title {
+	display: flex;
+	align-items: center;
+	height: 30px;
+}
+
+.title-bar .title img {
+	height: 75%;
+	border-radius: 50%;
+	margin-left: 15px;
 }

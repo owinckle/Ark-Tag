@@ -9,6 +9,7 @@ function createWindow() {
         height: 900,
         minWidth: 820,
         frame: false,
+        icon: __dirname + '/icon.png',
         webPreferences: { nodeIntegration: true, contextIsolation: false }
     })
 

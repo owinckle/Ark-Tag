@@ -17,6 +17,9 @@ import "./assets/app.css";
 import "./assets/tags.css";
 import "./assets/dark.css";
 
+// Asset
+import favicon from "./assets/favicon.ico";
+
 // Components
 import TitleBar from "./components/TitleBar/TitleBar";
 import Wrapper from "./layout/Wrapper";
@@ -241,7 +244,7 @@ export default class App extends Component {
 		return(
 			<React.StrictMode>
 				<Wrapper classes={ this.state.darkMode ? "wrapper dark" : "wrapper"}>
-					<TitleBar title="El Etiquetor" />
+					<TitleBar title="El Etiquetor" favicon={favicon} />
 					<Navbar>
 						<div>v1.0.0</div>
 						<div className="icon-div">
