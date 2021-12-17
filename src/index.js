@@ -18,6 +18,7 @@ import "./assets/tags.css";
 import "./assets/dark.css";
 
 // Components
+import TitleBar from "./components/TitleBar/TitleBar";
 import Wrapper from "./layout/Wrapper";
 import Container from "./layout/Container";
 import Grid from "./layout/Grid";
@@ -240,6 +241,7 @@ export default class App extends Component {
 		return(
 			<React.StrictMode>
 				<Wrapper classes={ this.state.darkMode ? "wrapper dark" : "wrapper"}>
+					<TitleBar title="El Etiquetor" />
 					<Navbar>
 						<div>v1.0.0</div>
 						<div className="icon-div">

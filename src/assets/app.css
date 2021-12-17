@@ -63,7 +63,7 @@ input {
 
 .main {
 	position: absolute;
-	top: 25px;
+	top: 55px;
 	width: calc(100% - 100px);
 	padding: 50px;
 	padding-bottom: 0px;
@@ -157,6 +157,7 @@ option {
 
 /* Navbar */
 .navbar {
+	top: 30px;
 	background: var(--secondary);
 	box-shadow: var(--simple-boxshadow);
 	padding: 10px 50px;
@@ -372,4 +373,46 @@ option {
 .modal .input-container input[type="number"]::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
+}
+
+/* Title Bar */
+.title-bar {
+	height: 30px;
+	background: var(--primary);
+	position: fixed;
+	width: calc(100%);
+	z-index: 1000;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	-webkit-app-region: drag;
+	color: var(--text);
+}
+
+.title-bar .app-name {
+	margin-left: 15px;
+}
+
+.title-bar .buttons {
+	display: flex;
+	align-items: center;
+	-webkit-app-region: no-drag;
+}
+
+.title-bar .buttons .btn-container {
+	cursor: pointer;
+	transition: background .3s ease;
+	width: 28px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.title-bar .buttons .btn-container:hover {
+	background: var(--secondary);
+}
+
+.title-bar .buttons .btn-container.close:hover {
+	background: var(--danger);
 }

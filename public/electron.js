@@ -6,7 +6,10 @@ const isDev = require("electron-is-dev");
 function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 1600,
-        height: 900
+        height: 900,
+        minWidth: 820,
+        frame: false,
+        webPreferences: { nodeIntegration: true, contextIsolation: false }
     })
 
     mainWindow.setMenuBarVisibility(false)
@@ -40,6 +43,22 @@ function createWindow() {
                 });
             });
         }
+    });
+
+    ipcMain.on("closeApp", () => {
+       app.quit();
+    });
+
+    ipcMain.on("minimizeApp", () => {
+        mainWindow.minimize();
+    });
+
+    ipcMain.on("maximizeApp", () => {
+        mainWindow.maximize();
+    });
+
+    ipcMain.on("restoreApp", () => {
+        mainWindow.restore();
     });
 }
 
