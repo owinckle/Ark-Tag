@@ -8,8 +8,6 @@ Also called "El Etiquetor" for some reasons.
 - Node
 - Electron
 - React
-- Concurrently
-- Wait On
 
 ## Packages
 - [XLSX](https://www.npmjs.com/package/xlsx)
