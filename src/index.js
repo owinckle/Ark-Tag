@@ -50,10 +50,10 @@ export default class App extends Component {
 				refFont: "12",
 				produit: "{produit}",
 				prodFont: "9",
-				labelFont: "10",
+				labelFont: "9",
 				t1: "{t1}€ TTC la pièce",
-				t2: "À partir de 5 pièces {t2}€ T2 TTC la pièce",
-				t3: "À partir de 15 pièces {t3}€ T3 TTC la pièce",
+				t2: "À partir de 5 pièces {t2}€ TTC la pièce",
+				t3: "À partir de 15 pièces {t3}€ TTC la pièce",
 			},
 			templateGros: {
 				ref: "{ref}",
@@ -62,15 +62,15 @@ export default class App extends Component {
 				prodFont: "9",
 				labelFont: "10",
 				t1: "{t1}€ TTC la pièce",
-				t2: "À partir de 5 pièces {t2}€ T2 TTC la pièce",
-				t3: "À partir de 15 pièces {t3}€ T3 TTC la pièce"
+				t2: "À partir de 5 pièces {t2}€ TTC la pièce",
+				t3: "À partir de 15 pièces {t3}€ TTC la pièce"
 			},
 			templateLots: {
 				ref: "{ref}",
 				refFont: "12",
 				produit: "{produit}",
 				prodFont: "9",
-				labelFont: "10",
+				labelFont: "9",
 				t1: "{t1}€ TTC la pièce",
 			},
 			templateBacs: {
@@ -78,10 +78,10 @@ export default class App extends Component {
 				refFont: "12",
 				produit: "{produit}",
 				prodFont: "9",
-				labelFont: "10",
+				labelFont: "9",
 				t1: "{t1}€ TTC la pièce",
-				t2: "À partir de 5 pièces {t2}€ T2 TTC la pièce",
-				t3: "À partir de 15 pièces {t3}€ T3 TTC la pièce"
+				t2: "À partir de 5 pièces {t2}€ TTC la pièce",
+				t3: "À partir de 15 pcs {t3}€ TTC/pc"
 			},
 			editTemplate: false
 		}

@@ -54,6 +54,9 @@ export default class PDFView extends Component {
                     flex-direction: column;
                     justify-content: space-between;
                 }
+                .tag .ref {
+                    font-weight: 600 !important;
+                }
                 .tag .label.highlight {
                     background: #ffff00;
                 }

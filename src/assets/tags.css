@@ -83,6 +83,10 @@
 	margin-left: auto;
 }
 
+.tags-container .tag .ref {
+	font-weight: 600 !important;
+}
+
 /* Chaines */
 .tags-container .tag.chaines {
 	width: 5.25cm;
