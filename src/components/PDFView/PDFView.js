@@ -30,8 +30,8 @@ export default class PDFView extends Component {
                     position: relative;
                     flex-wrap: wrap;
                     left: 1px;
-                    fontfamily: 'Calibri', sans-serif;
-                    letterSpacing: 1px;
+                    font-family: 'Calibri', sans-serif;
+                    letter-spacing: 1px;
                 }
                 .row.gros {
                     padding: 1.51cm 0.72cm;
@@ -52,7 +52,13 @@ export default class PDFView extends Component {
                     outline: 1px dotted #000;
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-between;
+                    justify-content: center;
+                }
+                .tag>div {
+                    margin-bottom: 5px;
+                }
+                .tag>div:last-child {
+                    margin-bottom: 0px;
                 }
                 .tag .ref {
                     font-weight: 600 !important;
@@ -104,9 +110,11 @@ export default class PDFView extends Component {
                         <div key={i + y} className={"tag " + this.props.template}>
                             <div style={{ fontSize: data.refFont + "px" }} className="ref">{ref}</div>
                             <div style={{ fontSize: data.prodFont + "px" }} className="name">{produit}</div>
-                            <div style={{ fontSize: data.labelFont + "px" }} className="label">{t1}</div>
-                            <div style={{ fontSize: data.labelFont + "px" }} className="label">{t2}</div>
-                            <div style={{ fontSize: data.labelFont + "px" }} className="label highlight">{t3}</div>
+                            <div>
+                                <div style={{ fontSize: data.labelFont + "px" }} className="label">{t1}</div>
+                                <div style={{ fontSize: data.labelFont + "px" }} className="label">{t2}</div>
+                                <div style={{ fontSize: data.labelFont + "px" }} className="label highlight">{t3}</div>
+                            </div>
                         </div>
                     );
                 } else {
@@ -116,8 +124,12 @@ export default class PDFView extends Component {
                     tagList.push(
                         <div key={i + y} className={"tag " + this.props.template}>
                             <div style={{ fontSize: data.refFont + "px" }} className="ref">{ref}</div>
-                            <div style={{ fontSize: data.prodFont + "px" }} className="name">{produit}</div>
-                            <div style={{ fontSize: data.labelFont + "px" }} className="label">{t1}</div>
+                            {produit != "" ?
+                                <div style={{ fontSize: data.prodFont + "px" }} className="name">{produit}</div>
+                            :null}
+                            { t1 != "" ?
+                                <div style={{ fontSize: data.labelFont + "px" }} className="label">{t1}</div>
+                            :null}
                         </div>
                     );
                 }

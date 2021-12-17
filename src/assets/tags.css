@@ -3,18 +3,20 @@
 	background: var(--secondary);
 	position: fixed;
 	right: 0px;
-	top: 0px;
+	top: 30px;
 	z-index: 999;
 	overflow-y: scroll;
 	padding: 25px;
 	box-shadow: var(--simple-boxshadow);
 	right: -25cm;
 	transition: right .3s ease;
+	padding-top: 15px;
 }
 
 .tags-modal.show {
 	right: 0px;
 }
+
 
 .tags-container {
 	min-height: 29.8cm;
@@ -71,8 +73,16 @@
 	outline: 1px dotted #000;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
 	overflow: hidden;
+}
+
+.tags-container .tag>div {
+	margin-bottom: 5px;
+}
+
+.tags-container .tag>div:last-child {
+	margin-bottom: 0px;
 }
 
 .tags-container .tag .label.highlight {
