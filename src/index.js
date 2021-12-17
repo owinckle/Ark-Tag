@@ -51,9 +51,9 @@ export default class App extends Component {
 				produit: "{produit}",
 				prodFont: "9",
 				labelFont: "9",
-				t1: "{t1}€ TTC la pièce",
-				t2: "À partir de 5 pièces {t2}€ TTC la pièce",
-				t3: "À partir de 15 pièces {t3}€ TTC la pièce",
+				t1: "{prix}€ TTC la pièce",
+				t2: "À partir de {qty} pièces {prix}€ TTC la pièce",
+				t3: "À partir de {qty} pièces {prix}€ TTC la pièce",
 			},
 			templateGros: {
 				ref: "{ref}",
@@ -61,9 +61,9 @@ export default class App extends Component {
 				produit: "{produit}",
 				prodFont: "9",
 				labelFont: "10",
-				t1: "{t1}€ TTC la pièce",
-				t2: "À partir de 5 pièces {t2}€ TTC la pièce",
-				t3: "À partir de 15 pièces {t3}€ TTC la pièce"
+				t1: "{prix}€ TTC la pièce",
+				t2: "À partir de {qty} pièces {prix}€ TTC la pièce",
+				t3: "À partir de {qty} pièces {prix}€ TTC la pièce"
 			},
 			templateLots: {
 				ref: "{ref}",
@@ -71,7 +71,7 @@ export default class App extends Component {
 				produit: "{produit}",
 				prodFont: "9",
 				labelFont: "9",
-				t1: "{t1}€ TTC la pièce",
+				t1: "{prix}€ TTC la pièce",
 			},
 			templateBacs: {
 				ref: "{ref}",
@@ -79,9 +79,9 @@ export default class App extends Component {
 				produit: "{produit}",
 				prodFont: "9",
 				labelFont: "9",
-				t1: "{t1}€ TTC la pièce",
-				t2: "À partir de 5 pièces {t2}€ TTC la pièce",
-				t3: "À partir de 15 pcs {t3}€ TTC/pc"
+				t1: "{prix}€ TTC la pièce",
+				t2: "À partir de {qty} pièces {prix}€ TTC la pièce",
+				t3: "À partir de {qty} pcs {prix}€ TTC/pc"
 			},
 			editTemplate: false
 		}
@@ -144,7 +144,7 @@ export default class App extends Component {
 			newData.push({
 				ref: data[i][0],
 				name: data[i][1],
-				quantites: [data[i][2], data[i + 1][2], data[i + 2][2]],
+				quantities: [data[i][2], data[i + 1][2], data[i + 2][2]],
 				prices: [data[i][3], data[i + 1][3], data[i + 2][3]],
 			});
 		}
@@ -197,7 +197,7 @@ export default class App extends Component {
 		for (let i = 0; i < selectedItems.length; i++) {
 			selectedRef.push(selectedItems[i]["ref"]);
 			selectedItemList.push(
-				<div key={i} className="table-row grid _3-grid">
+				<div key={"selected-" + i.toString()} className="table-row grid _3-grid">
 					<div>{selectedItems[i]["ref"]}</div>
 					<input
 						type="number"
@@ -215,7 +215,7 @@ export default class App extends Component {
 				if (!selectedRef.includes(data[i]["ref"])) {
 					if (data[i]["ref"].toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search == "") {
 						items.push(
-							<div key={i} className="table-row grid _6-grid">
+							<div key={"product-" + i.toString()} className="table-row grid _6-grid">
 								<div>{data[i]["ref"]}</div>
 								<div>{data[i]["name"]}</div>
 								<div>{data[i]["prices"][0]}</div>

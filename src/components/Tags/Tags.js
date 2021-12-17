@@ -5,16 +5,27 @@ export default function Tags(props) {
     const templateData = props.templateData;
     let tagList = [];
 
-    if (template == "chaines" || template == "gros" || template == "bacs") {
-        for (let i = 0; i < tags.length; i++) {
-            for (let y = 0; y < tags[i].quantity; y++) {
-                let ref = templateData.ref.replace("{ref}", tags[i]["ref"]);
-                let produit = templateData.produit.replace("{produit}", tags[i]["name"]);
-                let t1 = templateData.t1.replace("{t1}", parseFloat(tags[i]["prices"][0].replace(/,/g, ".")).toFixed(2));
-                let t2 = templateData.t2.replace("{t2}", parseFloat(tags[i]["prices"][1].replace(/,/g, ".")).toFixed(2));
-                let t3 = templateData.t3.replace("{t3}", parseFloat(tags[i]["prices"][2].replace(/,/g, ".")).toFixed(2));
+    for (let i = 0; i < tags.length; i++) {
+        for (let y = 0; y < tags[i].quantity; y++) {
+            // Titles
+            let ref = templateData.ref.replace("{ref}", tags[i]["ref"]);
+            let produit = templateData.produit.replace("{produit}", tags[i]["name"]);
+
+            // Labels
+            let t1 = templateData.t1.replace("{prix}", parseFloat(tags[i]["prices"][0].replace(/,/g, ".")).toFixed(2));
+            let t2, t3;
+            t1 = t1.replace("{qty}", tags[i]["quantities"][0]);
+            if (template != "lots") {
+                t2 = templateData.t2.replace("{prix}", parseFloat(tags[i]["prices"][1].replace(/,/g, ".")).toFixed(2));
+                t3 = templateData.t3.replace("{prix}", parseFloat(tags[i]["prices"][2].replace(/,/g, ".")).toFixed(2));
+                t2 = t2.replace("{qty}", tags[i]["quantities"][1]);
+                t3 = t3.replace("{qty}", tags[i]["quantities"][2]);
+            }
+
+            // Tags creation
+            if (template != "lots") {
                 tagList.push(
-                    <div key={i + y} className={"tag " + template}>
+                    <div key={i.toString() + "-" + y.toString()} className={"tag " + template}>
                         <div style={{fontSize: templateData.refFont + "px"}} className="ref">{ref}</div>
                         <div style={{fontSize: templateData.prodFont + "px"}} className="name">{produit}</div>
                         <div>
@@ -24,16 +35,9 @@ export default function Tags(props) {
                         </div>
                     </div>
                 );
-            }
-        }
-    } else if (template == "lots") {
-        for (let i = 0; i < tags.length; i++) {
-            for (let y = 0; y < tags[i].quantity; y++) {
-                let ref = templateData.ref.replace("{ref}", tags[i]["ref"]);
-                let produit = templateData.produit.replace("{produit}", tags[i]["name"]);
-                let t1 = templateData.t1.replace("{t1}", tags[i]["prices"][0]);
+            } else {
                 tagList.push(
-                    <div key={i + y} className={"tag " + template}>
+                    <div key={i.toString() + "-" + y.toString()} className={"tag " + template}>
                         <div style={{ fontSize: templateData.refFont + "px" }} className="ref">{ref}</div>
                         {produit != "" ?
                             <div style={{ fontSize: templateData.prodFont + "px" }} className="name">{produit}</div>

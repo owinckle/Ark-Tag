@@ -100,12 +100,22 @@ export default class PDFView extends Component {
         let tagList = [];
         for (let i = 0; i < tags.length; i++) {
             for (let y = 0; y < tags[i].quantity; y++) {
-                if (template == "chaines" || template == "gros" || template == "bacs") {
-                    let ref = data.ref.replace("{ref}", tags[i]["ref"]);
-                    let produit = data.produit.replace("{produit}", tags[i]["name"]);
-                    let t1 = data.t1.replace("{t1}", tags[i]["prices"][0]);
-                    let t2 = data.t2.replace("{t2}", tags[i]["prices"][1]);
-                    let t3 = data.t3.replace("{t3}", tags[i]["prices"][2]);
+                // Titles
+                let ref = data.ref.replace("{ref}", tags[i]["ref"]);
+                let produit = data.produit.replace("{produit}", tags[i]["name"]);
+
+                // Labels
+                let t1 = data.t1.replace("{prix}", parseFloat(tags[i]["prices"][0].replace(/,/g, ".")).toFixed(2));
+                let t2, t3;
+                t1 = t1.replace("{qty}", tags[i]["quantities"][0]);
+                if(template != "lots") {
+                    t2 = data.t2.replace("{prix}", parseFloat(tags[i]["prices"][1].replace(/,/g, ".")).toFixed(2));
+                    t3 = data.t3.replace("{prix}", parseFloat(tags[i]["prices"][2].replace(/,/g, ".")).toFixed(2));
+                    t2 = t2.replace("{qty}", tags[i]["quantities"][1]);
+                    t3 = t3.replace("{qty}", tags[i]["quantities"][2]);
+                }
+
+                if (template != "lots") {
                     tagList.push(
                         <div key={i + y} className={"tag " + this.props.template}>
                             <div style={{ fontSize: data.refFont + "px" }} className="ref">{ref}</div>
@@ -118,18 +128,15 @@ export default class PDFView extends Component {
                         </div>
                     );
                 } else {
-                    let ref = data.ref.replace("{ref}", tags[i]["ref"]);
-                    let produit = data.produit.replace("{produit}", tags[i]["name"]);
-                    let t1 = data.t1.replace("{t1}", tags[i]["prices"][0]);
                     tagList.push(
                         <div key={i + y} className={"tag " + this.props.template}>
                             <div style={{ fontSize: data.refFont + "px" }} className="ref">{ref}</div>
                             {produit != "" ?
                                 <div style={{ fontSize: data.prodFont + "px" }} className="name">{produit}</div>
-                            :null}
-                            { t1 != "" ?
+                                : null}
+                            {t1 != "" ?
                                 <div style={{ fontSize: data.labelFont + "px" }} className="label">{t1}</div>
-                            :null}
+                                : null}
                         </div>
                     );
                 }
