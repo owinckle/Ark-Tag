@@ -1,6 +1,6 @@
 {
-  "name": "ark-tag",
-  "version": "0.1.0",
+  "name": "el-etiquetor",
+  "version": "1.0",
   "private": true,
   "author": "Arkalys",
   "dependencies": {
