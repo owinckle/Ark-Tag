@@ -54,9 +54,9 @@ export default class App extends Component {
 				produit: "{produit}",
 				prodFont: "9",
 				labelFont: "9",
-				t1: "{prix}€ TTC la pièce",
-				t2: "À partir de {qty} pièces {prix}€ TTC la pièce",
-				t3: "À partir de {qty} pièces {prix}€ TTC la pièce",
+				t1: "€{prix} TTC la pièce",
+				t2: "À partir de {qty} pièces €{prix} TTC la pièce",
+				t3: "À partir de {qty} pièces €{prix} TTC la pièce",
 			},
 			templateGros: {
 				ref: "{ref}",
@@ -64,9 +64,9 @@ export default class App extends Component {
 				produit: "{produit}",
 				prodFont: "9",
 				labelFont: "10",
-				t1: "{prix}€ TTC la pièce",
-				t2: "À partir de {qty} pièces {prix}€ TTC la pièce",
-				t3: "À partir de {qty} pièces {prix}€ TTC la pièce"
+				t1: "€{prix} TTC la pièce",
+				t2: "À partir de {qty} pièces €{prix} TTC la pièce",
+				t3: "À partir de {qty} pièces €{prix} TTC la pièce"
 			},
 			templateLots: {
 				ref: "{ref}",
@@ -74,7 +74,7 @@ export default class App extends Component {
 				produit: "{produit}",
 				prodFont: "9",
 				labelFont: "9",
-				t1: "{prix}€ TTC la pièce",
+				t1: "€{prix} TTC la pièce",
 			},
 			templateBacs: {
 				ref: "{ref}",
@@ -82,9 +82,9 @@ export default class App extends Component {
 				produit: "{produit}",
 				prodFont: "9",
 				labelFont: "9",
-				t1: "{prix}€ TTC la pièce",
-				t2: "À partir de {qty} pièces {prix}€ TTC la pièce",
-				t3: "À partir de {qty} pcs {prix}€ TTC/pc"
+				t1: "€{prix} TTC la pièce",
+				t2: "À partir de {qty} pièces €{prix} TTC la pièce",
+				t3: "À partir de {qty} pcs €{prix} TTC/pc"
 			},
 			editTemplate: false
 		}
