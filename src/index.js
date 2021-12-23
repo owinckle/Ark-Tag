@@ -148,7 +148,7 @@ export default class App extends Component {
 				ref: data[i][0],
 				name: data[i][1],
 				quantities: [data[i][2], data[i + 1][2], data[i + 2][2]],
-				prices: [data[i][3], data[i + 1][3], data[i + 2][3]],
+				prices: [(data[i][3] * 1.2).toFixed(2), (data[i + 1][3] * 1.2).toFixed(2), parseFloat(data[i + 2][3]).toFixed(2)],
 			});
 		}
 

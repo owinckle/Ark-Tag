@@ -12,12 +12,12 @@ export default function Tags(props) {
             let produit = templateData.produit.replace("{produit}", tags[i]["name"]);
 
             // Labels
-            let t1 = templateData.t1.replace("{prix}", parseFloat(tags[i]["prices"][0]).toFixed(2).replace(".", ","));
+            let t1 = templateData.t1.replace("{prix}", tags[i]["prices"][0].replace(".", ","));
             let t2, t3;
             t1 = t1.replace("{qty}", parseInt(tags[i]["quantities"][0]));
             if (template != "lots") {
-                t2 = templateData.t2.replace("{prix}", parseFloat(tags[i]["prices"][1]).toFixed(2).replace(".", ","));
-                t3 = templateData.t3.replace("{prix}", parseFloat(tags[i]["prices"][2]).toFixed(2).replace(".", ","));
+                t2 = templateData.t2.replace("{prix}", tags[i]["prices"][1].replace(".", ","));
+                t3 = templateData.t3.replace("{prix}", tags[i]["prices"][2].replace(".", ","));
                 t2 = t2.replace("{qty}", parseInt(tags[i]["quantities"][1]));
                 t3 = t3.replace("{qty}", parseInt(tags[i]["quantities"][2]));
             }
