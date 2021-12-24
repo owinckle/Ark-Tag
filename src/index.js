@@ -56,7 +56,7 @@ export default class App extends Component {
 				labelFont: "9",
 				t1: "€{prix} TTC la pièce",
 				t2: "À partir de {qty} pièces €{prix} TTC la pièce",
-				t3: "À partir de {qty} pièces €{prix} TTC la pièce",
+				t3: "À partir de {qty} pièces €{prix} HT la pièce",
 			},
 			templateGros: {
 				ref: "{ref}",
@@ -66,7 +66,7 @@ export default class App extends Component {
 				labelFont: "10",
 				t1: "€{prix} TTC la pièce",
 				t2: "À partir de {qty} pièces €{prix} TTC la pièce",
-				t3: "À partir de {qty} pièces €{prix} TTC la pièce"
+				t3: "À partir de {qty} pièces €{prix} HT la pièce"
 			},
 			templateLots: {
 				ref: "{ref}",
@@ -84,7 +84,7 @@ export default class App extends Component {
 				labelFont: "9",
 				t1: "€{prix} TTC la pièce",
 				t2: "À partir de {qty} pièces €{prix} TTC la pièce",
-				t3: "À partir de {qty} pcs €{prix} TTC/pc"
+				t3: "À partir de {qty} pcs €{prix} HT/pc"
 			},
 			editTemplate: false
 		}
