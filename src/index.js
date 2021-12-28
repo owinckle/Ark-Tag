@@ -94,7 +94,7 @@ export default class App extends Component {
 		this.formatData		= this.formatData.bind(this);
 		this.changeHandler	= this.changeHandler.bind(this);
 		this.selectItem 	= this.selectItem.bind(this);
-		this.removeItem = this.removeItem.bind(this);
+		this.removeItem		= this.removeItem.bind(this);
 		this.quantityHandler = this.quantityHandler.bind(this);
 		this.tagsPreviewSwitch = this.tagsPreviewSwitch.bind(this);
 		this.updateState	= this.updateState.bind(this);
@@ -177,7 +177,7 @@ export default class App extends Component {
 	selectItem(item) {
 		const selectedItems = this.state.selectedItems;
 
-		item.quantity = 0;
+		item.quantity = 1;
 		selectedItems.push(item);
 		this.setState({
 			selectedItems: selectedItems
