@@ -11,6 +11,8 @@ import Add from '@mui/icons-material/Add';
 import Delete from '@mui/icons-material/Delete';
 import Close from '@mui/icons-material/Close';
 import Edit from '@mui/icons-material/Edit';
+import SelectAll from "@mui/icons-material/SelectAll";
+import { Alert } from "@mui/material";
 
 // CSS
 import "./assets/app.css";
@@ -99,6 +101,8 @@ export default class App extends Component {
 		this.tagsPreviewSwitch = this.tagsPreviewSwitch.bind(this);
 		this.updateState	= this.updateState.bind(this);
 		this.onKeyDown	= this.onKeyDown.bind(this);
+		this.selectAllItems = this.selectAllItems.bind(this);
+		this.closePDFView	= this.closePDFView.bind(this);
 	}
 
 	componentDidMount() {
@@ -174,6 +178,22 @@ export default class App extends Component {
 		return (newData);
 	}
 
+	selectAllItems() {
+		const data = this.state.data;
+		let selectedItems = [];
+
+		if (data) {
+			for (let i = 0; i < data.length ; i++) {
+				data[i].quantity = 1;
+				selectedItems.push(data[i]);
+			}
+		}
+
+		this.setState({
+			selectedItems: selectedItems
+		});
+	}
+
 	selectItem(item) {
 		const selectedItems = this.state.selectedItems;
 
@@ -210,6 +230,13 @@ export default class App extends Component {
 		});
 	}
 
+	closePDFView() {
+		this.setState({
+			pdfView: false,
+			alertSuccess: "Vos étiquettes ont été générées avec succès."
+		});
+	}
+
 	render() {
 		const data = this.state.data;
 		const selectedItems = this.state.selectedItems;
@@ -233,21 +260,26 @@ export default class App extends Component {
 
 		let items = [];
 		if (data) {
-			for (let i = 0; i < data.length; i++) {
-				if (!selectedRef.includes(data[i]["ref"])) {
-					if (data[i]["ref"].toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search == "") {
-						items.push(
-							<div key={"product-" + i.toString()} className="table-row grid _6-grid">
-								<div>{data[i]["ref"]}</div>
-								<div>{data[i]["name"]}</div>
-								<div>{data[i]["prices"][0]}</div>
-								<div>{data[i]["prices"][1]}</div>
-								<div>{data[i]["prices"][2]}</div>
-								<Add className="center success" onClick={() => this.selectItem(data[i])} />
-							</div>
-						);
+			try {
+				for (let i = 0; i < data.length; i++) {
+					if (!selectedRef.includes(data[i]["ref"])) {
+						if (data[i]["ref"].toLowerCase().includes(this.state.search.toLowerCase()) || this.state.search == "") {
+							items.push(
+								<div key={"product-" + i.toString()} className="table-row grid _6-grid">
+									<div>{data[i]["ref"]}</div>
+									<div>{data[i]["name"]}</div>
+									<div>{data[i]["prices"][0]}</div>
+									<div>{data[i]["prices"][1]}</div>
+									<div>{data[i]["prices"][2]}</div>
+									<Add className="center success" onClick={() => this.selectItem(data[i])} />
+								</div>
+							);
+						}
 					}
 				}
+			} catch (error) {
+				this.state.alertError = "Le format du fichier que vous avez essayé d'importer n'est pas valide.";
+				this.state.data = [];
 			}
 		}
 
@@ -272,8 +304,17 @@ export default class App extends Component {
 						</div>
 					</Navbar>
 					<Container>
+						{this.state.alertError ?
+							<Alert severity="error" onClose={() => this.setState({alertError: false})}>{this.state.alertError}</Alert>
+							: null
+						}
+
+						{this.state.alertSuccess ?
+							<Alert severity="success" onClose={() => this.setState({alertSuccess: false})}>{this.state.alertSuccess}</Alert>
+							: null
+						}
 						<Grid size="2">
-							<Card title="Sélections">
+							<Card title="Sélections" btn={<div><SelectAll onClick={this.selectAllItems} /></div>}>
 								<Grid size="3" extras="table-head">
 									<div className="label">Référence</div>
 									<div className="label">Quantité</div>
@@ -355,7 +396,7 @@ export default class App extends Component {
 				</Wrapper>
 				{this.state.pdfView ?
 					<PDFView
-						onClose={() => this.setState({pdfView: false})}
+						onClose={this.closePDFView}
 						tags={this.state.selectedItems}
 						data={templateData}
 						template={this.state.selectedTemplate}

@@ -49,7 +49,7 @@ export default class PDFView extends Component {
                 }
                 .tag {
                     text-align: center;
-                    outline: none;
+                    outline: 1px dotted red;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -65,6 +65,9 @@ export default class PDFView extends Component {
                 }
                 .tag .label.highlight {
                     background: #ffff00;
+                    width: fit-content;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
                 .tag.chaines {
                     width: 5.25cm;

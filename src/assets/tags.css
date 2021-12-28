@@ -19,12 +19,18 @@
 
 
 .tags-container {
-	min-height: 29.8cm;
+	height: 29.8cm;
 	width: 21.1cm;
 	background: var(--paper);
 	left: 50%;
 	transform: translateX(-50%);
 	position: relative;
+	margin-bottom: 25px;
+	box-shadow: var(--simple-boxshadow);
+}
+
+.tags-container {
+	margin-bottom: 25px;
 }
 
 .tags-modal .head {
@@ -51,6 +57,7 @@
 
 .tags-container .row.chaines {
 	left: 2px;
+	top: 2px;
 }
 
 .tags-container .row.gros {
