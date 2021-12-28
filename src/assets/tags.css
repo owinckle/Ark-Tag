@@ -59,12 +59,12 @@
 }
 
 .tags-container .row.lots {
-	padding: 1.07cm .5cm;
+	padding: 1.07cm 1cm;
 	justify-content: space-between;
 }
 
 .tags-container .row.bacs {
-	padding: 0.85cm 0.55cm;
+	padding: 0.85cm 0.78cm;
 	justify-content: space-between;
 }
 

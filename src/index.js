@@ -98,6 +98,25 @@ export default class App extends Component {
 		this.quantityHandler = this.quantityHandler.bind(this);
 		this.tagsPreviewSwitch = this.tagsPreviewSwitch.bind(this);
 		this.updateState	= this.updateState.bind(this);
+		this.onKeyDown	= this.onKeyDown.bind(this);
+	}
+
+	componentDidMount() {
+		document.addEventListener('keydown', this.onKeyDown);
+	}
+
+	onKeyDown(e) {
+		if (e.keyCode === 27) {
+			if (this.state.tagsPreview) {
+				this.setState({
+					tagsPreview: false
+				});
+			} else if (this.state.editTemplate) {
+				this.setState({
+					editTemplate: false
+				});
+			}
+		}
 	}
 
 	updateState(target, value) {

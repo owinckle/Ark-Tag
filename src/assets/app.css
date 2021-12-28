@@ -311,7 +311,7 @@ option {
 	width: 350px;
 	background: var(--secondary);
 	position: absolute;
-	top: 50%;
+	top: calc(50% + 30px);
 	left: 50%;
 	transform: translate(-50%, -50%);
 	box-shadow: var(--simple-boxshadow);
