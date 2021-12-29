@@ -29,5 +29,8 @@ New:
 Bug fix:
 - Set the width of the yellow highlight to fit the text in the generated pdf
 
+-------------------------------------------
+
 #v.1.0.3
 To Fix: Hack on "lots" template in pdf generation
+To add: message removal on similar tasks
