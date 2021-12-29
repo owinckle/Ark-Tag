@@ -31,7 +31,7 @@ function createWindow() {
 
             var pdfOptions = {
                 landscape: false,
-                silent: true,
+                silent: false,
                 marginsType: 0,
                 printBackground: true,
                 printSelectionOnly: false,

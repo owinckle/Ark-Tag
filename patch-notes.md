@@ -24,6 +24,7 @@ New:
 - Set default quantity of a selected item to 1
 - Select all items button
 - "Escape" shortcut to close the preview and template menus
+- Pop up alerts
 
 Bug fix:
 - Set the width of the yellow highlight to fit the text in the generated pdf

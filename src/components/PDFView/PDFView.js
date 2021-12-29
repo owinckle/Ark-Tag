@@ -21,7 +21,7 @@ export default class PDFView extends Component {
             var style = this.externalWindow.document.createElement("style");
             style.type = "text/css";
             style.appendChild(this.externalWindow.document.createTextNode(`
-                @page{margin:0}
+                @page{margin:0;}
                 .ref{font-size: 12px}
                 .name{font-size: 9px}
                 .label{font-size: 10px}
@@ -39,12 +39,12 @@ export default class PDFView extends Component {
                 }
 
                 .row.lots {
-                    padding: 1.07cm .5cm;
+                    padding: 1.07cm 1cm;
                     justify-content: space-between;
                 }
 
                 .row.bacs {
-                    padding: 0.85cm 0.55cm;
+                    padding: 0.85cm 0.78cm;
                     justify-content: space-between;
                 }
                 .tag {
@@ -99,10 +99,14 @@ export default class PDFView extends Component {
         const tags = this.props.tags;
         const template = this.props.template;
         const data = this.props.data;
-
         let tagList = [];
+        let pages = [];
+    	let itemCounter = 0;
+
         for (let i = 0; i < tags.length; i++) {
             for (let y = 0; y < tags[i].quantity; y++) {
+                itemCounter++;
+
                 // Titles
                 let ref = data.ref.replace("{ref}", tags[i]["ref"]);
                 let produit = data.produit.replace("{produit}", tags[i]["name"]);
@@ -143,8 +147,29 @@ export default class PDFView extends Component {
                         </div>
                     );
                 }
+
+                // Generate Page
+                const pageChaines = itemCounter == 40 && template == "chaines";
+                const pageGros = itemCounter == 21 && template == "gros";
+                const pageLots = itemCounter == 65 && template == "lots";
+                const pageBacs = itemCounter == 44 && template == "bacs";
+                if (pageChaines || pageGros || pageLots || pageBacs) {
+                    pages.push(
+                        <div className={"row " + template}>
+                            {tagList}
+                        </div>
+                    );
+                    itemCounter = 0;
+                    tagList = [];
+                }
             }
         }
+
+        // Generate last page
+        const lastChaines = itemCounter < 40 && template == "chaines";
+        const lastGros = itemCounter < 21 && template == "gros";
+        const lastLots = itemCounter < 65 && template == "lots";
+        const lastBacs = itemCounter < 44 && template == "bacs";
 
         let ec = 0;
         if (template == "gros") {
@@ -156,11 +181,19 @@ export default class PDFView extends Component {
         }
         let extras = Array(ec).fill(<div className={"tag extra " + template}></div>);
 
-        const content = (<div className={"row " + template}>
-            {tagList}
-            {extras}
-        </div>);
+        if (((lastChaines || lastGros || lastLots || lastBacs) && itemCounter != 0) || tagList.length == 0) {
+            pages.push(
+                <div className="tags-container">
+                    <div className={"row " + template}>
+                        {tagList}
+                        {extras}
+                    </div>
+                </div>
+            );
+        }
 
-        return ReactDOM.createPortal(content, this.containerEl);
+        // const content = pages;
+
+        return ReactDOM.createPortal(pages, this.containerEl);
     }
 }
