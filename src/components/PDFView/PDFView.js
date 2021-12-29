@@ -15,13 +15,16 @@ export default class PDFView extends Component {
 
         if (this.externalWindow) {
             this.externalWindow.document.body.appendChild(this.containerEl);
-            this.externalWindow.document.body.style.margin = "0px";
-            this.externalWindow.document.body.style.overflowX = "hidden";
 
             var style = this.externalWindow.document.createElement("style");
             style.type = "text/css";
             style.appendChild(this.externalWindow.document.createTextNode(`
                 @page{margin:0;}
+                body {
+                    margin: 0;
+                    overflow-x: hidden;
+                    -webkit-print-color-adjust: exact;
+                }
                 .ref{font-size: 12px}
                 .name{font-size: 9px}
                 .label{font-size: 10px}
@@ -49,7 +52,7 @@ export default class PDFView extends Component {
                 }
                 .tag {
                     text-align: center;
-                    outline: 1px dotted red;
+                    outline: none;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -61,7 +64,7 @@ export default class PDFView extends Component {
                     margin-bottom: 0px;
                 }
                 .tag .ref {
-                    font-weight: 600 !important;
+                    font-weight: 500 !important;
                 }
                 .tag .label.highlight {
                     background: #ffff00;
@@ -140,10 +143,10 @@ export default class PDFView extends Component {
                             <div style={{ fontSize: data.refFont + "px" }} className="ref">{ref}</div>
                             {produit != "" ?
                                 <div style={{ fontSize: data.prodFont + "px" }} className="name">{produit}</div>
-                                : null}
+                            : null}
                             {t1 != "" ?
-                                <div style={{ fontSize: data.labelFont + "px" }} className="label">{t1}</div>
-                                : null}
+                                <div style={{ fontSize: data.labelFont + "px", border: "1px solid transparent" }} className="label">{t1}</div>
+                            : null}
                         </div>
                     );
                 }

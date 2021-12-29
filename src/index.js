@@ -45,6 +45,7 @@ export default class App extends Component {
 		this.state = {
 			darkMode: false,
 			data: null,
+			totalItems: 0,
 			search: "",
 			selectedItems: [],
 			tagsPreview: false,
@@ -200,25 +201,30 @@ export default class App extends Component {
 		item.quantity = 1;
 		selectedItems.push(item);
 		this.setState({
-			selectedItems: selectedItems
+			selectedItems: selectedItems,
+			totalItems: this.state.totalItems + 1
 		});
 	}
 
 	removeItem(index) {
 		const selectedItems = this.state.selectedItems;
+		const item = this.state.selectedItems[index];
 
 		selectedItems.splice(index, 1);
 		this.setState({
-			selectedItems: selectedItems
+			selectedItems: selectedItems,
+			totalItems: this.state.totalItems - item.quantity
 		});
 	}
 
 	quantityHandler(e, i) {
 		let selectedItems = this.state.selectedItems;
+		let toAdd = e.target.value - selectedItems[i].quantity;
 
 		selectedItems[i].quantity = e.target.value;
 		this.setState({
-			selectedItems: selectedItems
+			selectedItems: selectedItems,
+			totalItems: this.state.totalItems + toAdd
 		});
 	}
 
@@ -292,12 +298,23 @@ export default class App extends Component {
 			templateData = this.state.templateBacs;
 		}
 
+		let totalPages = 1;
+		if (this.state.selectedTemplate == "chaines") {
+			totalPages += parseInt((this.state.totalItems - 1) / 40);
+		} else if (this.state.selectedTemplate == "gros") {
+			totalPages += parseInt((this.state.totalItems - 1) / 21);
+		} else if (this.state.selectedTemplate == "lots") {
+			totalPages += parseInt((this.state.totalItems - 1) / 65);
+		} else if (this.state.selectedTemplate == "bacs") {
+			totalPages += parseInt((this.state.totalItems - 1) / 44);
+		}
+
 		return(
 			<React.StrictMode>
 				<Wrapper classes={ this.state.darkMode ? "wrapper dark" : "wrapper"}>
 					<TitleBar title="El Etiquetor" favicon={favicon} />
-					<Navbar>
-						<div>v1.0.1</div>
+					<Navbar>	
+						<div>v1.0.2</div>
 						<div className="icon-div">
 							{this.state.darkMode ? <DarkMode onClick={this.lightSwitch} /> : <LightMode onClick={this.lightSwitch} />}
 							<Upload onClick={ this.import } />
@@ -334,6 +351,7 @@ export default class App extends Component {
 									</select>
 									<Edit onClick={() => this.setState({editTemplate: true})} />
 								</Wrapper>
+								<div className="page-counter">Pages: {totalPages}</div>
 								<Wrapper classes="flex">
 									<DefaultButton action={this.tagsPreviewSwitch} label="Aperçu" />
 									<DefaultButton action={() => this.setState({ pdfView: true })} label="Générer" />
