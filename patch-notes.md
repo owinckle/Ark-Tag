@@ -18,7 +18,7 @@ v1.0.1:
 
 -------------------------------------------
 
-#v.1.0.2
+v.1.0.2
 New:
 - Generating on multiple pages depending of the template and amount of tags
 - Set default quantity of a selected item to 1
@@ -31,6 +31,6 @@ Bug fix:
 
 -------------------------------------------
 
-#v.1.0.3
+v.1.0.3
 To Fix: Hack on "lots" template in pdf generation
 To add: message removal on similar tasks
