@@ -32,5 +32,10 @@ Bug fix:
 -------------------------------------------
 
 v.1.0.3
-To Fix: Hack on "lots" template in pdf generation
+New:
+
+Changes:
+- Changed default price format €{prix} -> {prix} €
+- Default size for the reference on Bac and Gros -> +1 for Bac and +2 for Gros
+
 To add: message removal on similar tasks

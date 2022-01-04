@@ -19,11 +19,40 @@ export default function Tags(props) {
 			let t1 = templateData.t1.replace("{prix}", tags[i]["prices"][0].replace(".", ","));
 			let t2, t3;
 			t1 = t1.replace("{qty}", parseInt(tags[i]["quantities"][0]));
+
+			// Style
+			let t1Weight;
+			let t2Weight, t3Weight;
+			if (templateData.t1Style == "normal") {
+				t1Weight = "400";
+			} else if (templateData.t1Style == "gras") {
+				t1Weight = "600"
+			}
+			
+			let t1Style = templateData.t1Style == "italique" ? "italic" : "normal";
+			let t2Style, t3Style;
+			
 			if (template != "lots") {
 				t2 = templateData.t2.replace("{prix}", tags[i]["prices"][1].replace(".", ","));
 				t3 = templateData.t3.replace("{prix}", tags[i]["prices"][2].replace(".", ","));
 				t2 = t2.replace("{qty}", parseInt(tags[i]["quantities"][1]));
 				t3 = t3.replace("{qty}", parseInt(tags[i]["quantities"][2]));
+
+				// Style
+				if (templateData.t2Style == "normal") {
+					t2Weight = "400";
+				} else if (templateData.t2Style == "gras") {
+					t2Weight = "600"
+				}
+				
+				if (templateData.t3Style == "normal") {
+					t3Weight = "400";
+				} else if (templateData.t3Style == "gras") {
+					t3Weight = "600"
+				}
+
+				t2Style = templateData.t2Style == "italique" ? "italic" : "normal";
+				t3Style = templateData.t3Style == "italique" ? "italic" : "normal";
 			}
 
 			// Tags creation
@@ -33,9 +62,9 @@ export default function Tags(props) {
 						<div style={{fontSize: templateData.refFont + "px"}} className="ref">{ref}</div>
 						<div style={{fontSize: templateData.prodFont + "px"}} className="name">{produit}</div>
 						<div>
-							<div style={{fontSize: templateData.labelFont + "px"}} className="label">{t1}</div>
-							<div style={{fontSize: templateData.labelFont + "px"}} className="label">{t2}</div>
-							<div style={{fontSize: templateData.labelFont + "px"}} className="label highlight">{t3}</div>
+							<div style={{ fontSize: templateData.t1Font + "px", fontWeight: t1Weight, fontStyle: t1Style }} className="label">{t1}</div>
+							<div style={{ fontSize: templateData.t2Font + "px", fontWeight: t2Weight, fontStyle: t2Style }} className="label">{t2}</div>
+							<div style={{ fontSize: templateData.t3Font + "px", fontWeight: t3Weight, fontStyle: t3Style }} className="label highlight">{t3}</div>
 						</div>
 					</div>
 				);
@@ -47,7 +76,7 @@ export default function Tags(props) {
 							<div style={{ fontSize: templateData.prodFont + "px" }} className="name">{produit}</div>
 						: null}
 						{t1 != "" ?
-							<div style={{ fontSize: templateData.labelFont + "px" }} className="label">{t1}</div>
+							<div style={{ fontSize: templateData.t1Font + "px", fontWeight: t1Weight, fontStyle: t1Style }} className="label">{t1}</div>
 						: null}
 					</div>
 				);

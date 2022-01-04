@@ -62,8 +62,8 @@ input {
 }
 
 .main {
-	position: absolute;
-	top: 55px;
+	position: relative;
+	top: 85px;
 	width: calc(100% - 100px);
 	padding: 50px;
 	padding-bottom: 0px;
@@ -323,7 +323,7 @@ option {
 
 /* Modal */
 .modal {
-	width: 350px;
+	width: 600px;
 	background: var(--secondary);
 	position: absolute;
 	top: calc(50% + 30px);
@@ -337,16 +337,27 @@ option {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: 15px;
+	height: 25px;
+	position: fixed;
+	width: calc(100% - 30px);
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+	padding-bottom: 10px;
 }
 
 .modal .body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	position: relative;
+	top: 50px;
+	margin-bottom: 60px;
+	height: 65vh;
+	padding-right: 15px;
+	overflow-y: scroll;
 }
 
-.modal .body input {
+.modal .body input,
+.modal .body select {
 	width: calc(100% - 30px);
 	margin-bottom: 15px;
 	background: transparent;
@@ -356,6 +367,11 @@ option {
 	border-radius: 5px;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	transition: border .3s ease;
+}
+
+.modal .body select {
+	cursor: pointer;
+	padding-top: 13px;
 }
 
 .modal .body input:focus {
@@ -369,18 +385,19 @@ option {
 }
 
 .modal .input-container .metric {
-	margin-bottom: 15px;
 	position: absolute;
-	right: 30px;
+	right: 10px;
 	font-size: 14px;
 	color: var(--sub);
+	top: 9px;
 }
 
 .modal .input-container input[type="number"] {
-	width: 50px;
+	width: 35px;
 }
 
-.modal .input-container input[type="text"] {
+.modal .input-container input[type="text"],
+.modal .input-container select {
 	margin-right: 15px;
 }
 
@@ -388,6 +405,20 @@ option {
 .modal .input-container input[type="number"]::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
+}
+
+.modal .metric-container {
+	position: relative;
+}
+
+.modal .separator {
+	margin-bottom: 15px;
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+	width: 100%;
+}
+
+.modal .input-container input[type="text"].full-w {
+	margin-right: 0px;
 }
 
 /* Title Bar */
