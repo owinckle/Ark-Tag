@@ -85,14 +85,14 @@ export default function TemplateChaines(props) {
                         <option value="italique">Italique</option>
                     </select>
                     <select value={refHighlight} onChange={(e) => setRefHighlight(e.target.value)}>
-                        <option value="transperent">Surlignage</option>
+                        <option value="transparent">Surlignage</option>
                         <option value="red">Rouge</option>
                         <option value="yellow">Jaune</option>
                         <option value="blue">Bleu</option>
                         <option value="green">Green</option>
                     </select>
-                    <select value={refHighlight} onChange={(e) => setRefHighlight(e.target.value)}>
-                        <option value="transperent">Texte</option>
+                    <select value={refColor} onChange={(e) => setRefColor(e.target.value)}>
+                        <option value="black">Texte</option>
                         <option value="red">Rouge</option>
                         <option value="yellow">Jaune</option>
                         <option value="blue">Bleu</option>
@@ -116,6 +116,20 @@ export default function TemplateChaines(props) {
                         <option value="gras">Gras</option>
                         <option value="italique">Italique</option>
                     </select>
+                    <select value={prodHighlight} onChange={(e) => setProdHighlight(e.target.value)}>
+                        <option value="transparent">Surlignage</option>
+                        <option value="red">Rouge</option>
+                        <option value="yellow">Jaune</option>
+                        <option value="blue">Bleu</option>
+                        <option value="green">Green</option>
+                    </select>
+                    <select value={prodColor} onChange={(e) => setProdColor(e.target.value)}>
+                        <option value="black">Texte</option>
+                        <option value="red">Rouge</option>
+                        <option value="yellow">Jaune</option>
+                        <option value="blue">Bleu</option>
+                        <option value="green">Green</option>
+                    </select>
                     <div className="metric-container">
                         <input type="number" value={prodFont} onChange={(e) => setProdFont(e.target.value)} />
                         <span className="metric">px</span>
@@ -133,6 +147,20 @@ export default function TemplateChaines(props) {
                         <option value="normal">Style</option>
                         <option value="gras">Gras</option>
                         <option value="italique">Italique</option>
+                    </select>
+                    <select value={t1Highlight} onChange={(e) => setT1Highlight(e.target.value)}>
+                        <option value="transparent">Surlignage</option>
+                        <option value="red">Rouge</option>
+                        <option value="yellow">Jaune</option>
+                        <option value="blue">Bleu</option>
+                        <option value="green">Green</option>
+                    </select>
+                    <select value={t1Color} onChange={(e) => setT1Color(e.target.value)}>
+                        <option value="black">Texte</option>
+                        <option value="red">Rouge</option>
+                        <option value="yellow">Jaune</option>
+                        <option value="blue">Bleu</option>
+                        <option value="green">Green</option>
                     </select>
                     <div className="metric-container">
                         <input type="number" value={t1Font} onChange={(e) => setT1Font(e.target.value)} />
@@ -152,6 +180,20 @@ export default function TemplateChaines(props) {
                         <option value="gras">Gras</option>
                         <option value="italique">Italique</option>
                     </select>
+                    <select value={t2Highlight} onChange={(e) => setT2Highlight(e.target.value)}>
+                        <option value="transparent">Surlignage</option>
+                        <option value="red">Rouge</option>
+                        <option value="yellow">Jaune</option>
+                        <option value="blue">Bleu</option>
+                        <option value="green">Green</option>
+                    </select>
+                    <select value={t2Color} onChange={(e) => setT2Color(e.target.value)}>
+                        <option value="black">Texte</option>
+                        <option value="red">Rouge</option>
+                        <option value="yellow">Jaune</option>
+                        <option value="blue">Bleu</option>
+                        <option value="green">Green</option>
+                    </select>
                     <div className="metric-container">
                         <input type="number" value={t2Font} onChange={(e) => setT2Font(e.target.value)} />
                         <span className="metric">px</span>
@@ -169,6 +211,20 @@ export default function TemplateChaines(props) {
                         <option value="gras">Gras</option>
                         <option value="normal">Style</option>
                         <option value="italique">Italique</option>
+                    </select>
+                    <select value={t3Highlight} onChange={(e) => setT3Highlight(e.target.value)}>
+                        <option value="transparent">Surlignage</option>
+                        <option value="red">Rouge</option>
+                        <option value="yellow">Jaune</option>
+                        <option value="blue">Bleu</option>
+                        <option value="green">Green</option>
+                    </select>
+                    <select value={t3Color} onChange={(e) => setT3Color(e.target.value)}>
+                        <option value="black">Texte</option>
+                        <option value="red">Rouge</option>
+                        <option value="yellow">Jaune</option>
+                        <option value="blue">Bleu</option>
+                        <option value="green">Green</option>
                     </select>
                     <div className="metric-container">
                         <input type="number" value={t3Font} onChange={(e) => setT3Font(e.target.value)} />

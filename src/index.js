@@ -75,7 +75,7 @@ export default class App extends Component {
 				t1Color: "black",
 				t2Highlight: "transparent",
 				t2Color: "black",
-				t3Highlight: "transparent",
+				t3Highlight: "yellow",
 				t3Color: "black"
 			},
 			templateGros: {

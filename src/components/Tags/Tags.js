@@ -30,7 +30,7 @@ export default function Tags(props) {
 			let t2Style, t3Style, refStyle, prodStyle;
 			refStyle = templateData.refStyle == "italique" ? "italic" : "normal";
 			prodStyle = templateData.prodStyle == "italique" ? "italic" : "normal";
-			
+
 			if (template != "lots") {
 				t2 = templateData.t2.replace("{prix}", tags[i]["prices"][1].replace(".", ","));
 				t3 = templateData.t3.replace("{prix}", tags[i]["prices"][2].replace(".", ","));
@@ -49,12 +49,12 @@ export default function Tags(props) {
 			if (template != "lots") {
 				tagList.push(
 					<div key={i.toString() + "-" + y.toString()} className={"tag " + template}>
-						<div style={{fontSize: templateData.refFont + "px", fontWeight: refWeight, fontStyle: refStyle}} className="ref">{ref}</div>
-						<div style={{fontSize: templateData.prodFont + "px", fontWeight: prodWeight, fontStyle: prodStyle}} className="name">{produit}</div>
+						<div style={{fontSize: templateData.refFont + "px", fontWeight: refWeight, fontStyle: refStyle, background: templateData.refHighlight, color: templateData.refColor}} className="ref">{ref}</div>
+						<div style={{fontSize: templateData.prodFont + "px", fontWeight: prodWeight, fontStyle: prodStyle, background: templateData.prodHighlight, color: templateData.prodColor}} className="name">{produit}</div>
 						<div>
-							<div style={{ fontSize: templateData.t1Font + "px", fontWeight: t1Weight, fontStyle: t1Style }} className="label">{t1}</div>
-							<div style={{ fontSize: templateData.t2Font + "px", fontWeight: t2Weight, fontStyle: t2Style }} className="label">{t2}</div>
-							<div style={{ fontSize: templateData.t3Font + "px", fontWeight: t3Weight, fontStyle: t3Style }} className="label highlight">{t3}</div>
+							<div style={{ fontSize: templateData.t1Font + "px", fontWeight: t1Weight, fontStyle: t1Style, background: templateData.t1Highlight, color: templateData.t1Color }} className="label">{t1}</div>
+							<div style={{ fontSize: templateData.t2Font + "px", fontWeight: t2Weight, fontStyle: t2Style, background: templateData.t2Highlight, color: templateData.t2Color }} className="label">{t2}</div>
+							<div style={{ fontSize: templateData.t3Font + "px", fontWeight: t3Weight, fontStyle: t3Style, background: templateData.t3Highlight, color: templateData.t3Color }} className="label">{t3}</div>
 						</div>
 					</div>
 				);
