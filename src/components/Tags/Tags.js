@@ -61,12 +61,12 @@ export default function Tags(props) {
 			} else {
 				tagList.push(
 					<div key={i.toString() + "-" + y.toString()} className={"tag " + template}>
-						<div style={{ fontSize: templateData.refFont + "px", fontWeight: refWeight, fontStyle: refStyle }} className="ref">{ref}</div>
+						<div style={{ fontSize: templateData.refFont + "px", fontWeight: refWeight, fontStyle: refStyle, background: templateData.refHighlight, color: templateData.refColor }} className="ref">{ref}</div>
 						{produit != "" ?
-							<div style={{ fontSize: templateData.prodFont + "px", fontWeight: prodWeight, fontStyle: prodStyle }} className="name">{produit}</div>
+							<div style={{ fontSize: templateData.prodFont + "px", fontWeight: prodWeight, fontStyle: prodStyle, background: templateData.prodHighlight, color: templateData.prodColor }} className="name">{produit}</div>
 						: null}
 						{t1 != "" ?
-							<div style={{ fontSize: templateData.t1Font + "px", fontWeight: t1Weight, fontStyle: t1Style }} className="label">{t1}</div>
+							<div style={{ fontSize: templateData.t1Font + "px", fontWeight: t1Weight, fontStyle: t1Style, background: templateData.t1Highlight, color: templateData.t1Color }} className="label">{t1}</div>
 						: null}
 					</div>
 				);

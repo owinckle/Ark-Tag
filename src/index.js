@@ -81,8 +81,12 @@ export default class App extends Component {
 			templateGros: {
 				ref: "{ref}",
 				refFont: "14",
+				refHighlight: "transparent",
+				refColor: "black",
 				produit: "{produit}",
 				prodFont: "9",
+				prodHighlight: "transparent",
+				prodColor: "black",
 				t1Font: "10",
 				t2Font: "10",
 				t3Font: "10",
@@ -93,24 +97,40 @@ export default class App extends Component {
 				prodStyle: "normal",
 				t1Style: "normal",
 				t2Style: "normal",
-				t3Style: "normal"
+				t3Style: "normal",
+				t1Highlight: "transparent",
+				t1Color: "black",
+				t2Highlight: "transparent",
+				t2Color: "black",
+				t3Highlight: "yellow",
+				t3Color: "black"
 			},
 			templateLots: {
 				ref: "{ref}",
 				refFont: "12",
+				refHighlight: "transparent",
+				refColor: "black",
+				produit: "{produit}",
+				prodFont: "9",
 				produit: "{produit}",
 				prodFont: "9",
 				t1Font: "9",
 				t1: "{prix} € TTC la pièce",
 				refStyle: "normal",
 				prodStyle: "normal",
-				t1Style: "normal"
+				t1Style: "normal",
+				t1Highlight: "transparent",
+				t1Color: "black"
 			},
 			templateBacs: {
 				ref: "{ref}",
 				refFont: "13",
+				refHighlight: "transparent",
+				refColor: "black",
 				produit: "{produit}",
 				prodFont: "9",
+				prodHighlight: "transparent",
+				prodColor: "black",
 				t1Font: "9",
 				t2Font: "9",
 				t3Font: "9",
@@ -121,7 +141,13 @@ export default class App extends Component {
 				prodStyle: "normal",
 				t1Style: "normal",
 				t2Style: "normal",
-				t3Style: "normal"
+				t3Style: "normal",
+				t1Highlight: "transparent",
+				t1Color: "black",
+				t2Highlight: "transparent",
+				t2Color: "black",
+				t3Highlight: "yellow",
+				t3Color: "black"
 			},
 			editTemplate: false
 		}
