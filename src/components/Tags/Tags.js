@@ -21,16 +21,15 @@ export default function Tags(props) {
 			t1 = t1.replace("{qty}", parseInt(tags[i]["quantities"][0]));
 
 			// Style
-			let t1Weight;
-			let t2Weight, t3Weight;
-			if (templateData.t1Style == "normal") {
-				t1Weight = "400";
-			} else if (templateData.t1Style == "gras") {
-				t1Weight = "600"
-			}
-			
+			let t1Weight, t2Weight, t3Weight, refWeight, prodWeight;
+			t1Weight = templateData.t1Style == "gras" ? "600" : "400";
+			refWeight = templateData.refStyle == "gras" ? "600" : "400";
+			prodWeight = templateData.prodStyle == "gras" ? "600" : "400";
+
 			let t1Style = templateData.t1Style == "italique" ? "italic" : "normal";
-			let t2Style, t3Style;
+			let t2Style, t3Style, refStyle, prodStyle;
+			refStyle = templateData.refStyle == "italique" ? "italic" : "normal";
+			prodStyle = templateData.prodStyle == "italique" ? "italic" : "normal";
 			
 			if (template != "lots") {
 				t2 = templateData.t2.replace("{prix}", tags[i]["prices"][1].replace(".", ","));
@@ -39,18 +38,9 @@ export default function Tags(props) {
 				t3 = t3.replace("{qty}", parseInt(tags[i]["quantities"][2]));
 
 				// Style
-				if (templateData.t2Style == "normal") {
-					t2Weight = "400";
-				} else if (templateData.t2Style == "gras") {
-					t2Weight = "600"
-				}
-				
-				if (templateData.t3Style == "normal") {
-					t3Weight = "400";
-				} else if (templateData.t3Style == "gras") {
-					t3Weight = "600"
-				}
-
+				t2Weight = templateData.t2Style == "gras" ? "600" : "400";
+				t3Weight = templateData.t3Style == "gras" ? "600" : "400";
+	
 				t2Style = templateData.t2Style == "italique" ? "italic" : "normal";
 				t3Style = templateData.t3Style == "italique" ? "italic" : "normal";
 			}
@@ -59,8 +49,8 @@ export default function Tags(props) {
 			if (template != "lots") {
 				tagList.push(
 					<div key={i.toString() + "-" + y.toString()} className={"tag " + template}>
-						<div style={{fontSize: templateData.refFont + "px"}} className="ref">{ref}</div>
-						<div style={{fontSize: templateData.prodFont + "px"}} className="name">{produit}</div>
+						<div style={{fontSize: templateData.refFont + "px", fontWeight: refWeight, fontStyle: refStyle}} className="ref">{ref}</div>
+						<div style={{fontSize: templateData.prodFont + "px", fontWeight: prodWeight, fontStyle: prodStyle}} className="name">{produit}</div>
 						<div>
 							<div style={{ fontSize: templateData.t1Font + "px", fontWeight: t1Weight, fontStyle: t1Style }} className="label">{t1}</div>
 							<div style={{ fontSize: templateData.t2Font + "px", fontWeight: t2Weight, fontStyle: t2Style }} className="label">{t2}</div>
@@ -71,9 +61,9 @@ export default function Tags(props) {
 			} else {
 				tagList.push(
 					<div key={i.toString() + "-" + y.toString()} className={"tag " + template}>
-						<div style={{ fontSize: templateData.refFont + "px" }} className="ref">{ref}</div>
+						<div style={{ fontSize: templateData.refFont + "px", fontWeight: refWeight, fontStyle: refStyle }} className="ref">{ref}</div>
 						{produit != "" ?
-							<div style={{ fontSize: templateData.prodFont + "px" }} className="name">{produit}</div>
+							<div style={{ fontSize: templateData.prodFont + "px", fontWeight: prodWeight, fontStyle: prodStyle }} className="name">{produit}</div>
 						: null}
 						{t1 != "" ?
 							<div style={{ fontSize: templateData.t1Font + "px", fontWeight: t1Weight, fontStyle: t1Style }} className="label">{t1}</div>

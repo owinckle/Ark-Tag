@@ -54,8 +54,12 @@ export default class App extends Component {
 			templateChaines: {
 				ref: "{ref}",
 				refFont: "12",
+				refHighlight: "transparent",
+				refColor: "black",
 				produit: "{produit}",
 				prodFont: "9",
+				prodHighlight: "transparent",
+				prodColor: "black",
 				t1Font: "9",
 				t2Font: "9",
 				t3Font: "9",
@@ -66,7 +70,13 @@ export default class App extends Component {
 				prodStyle: "normal",
 				t1Style: "normal",
 				t2Style: "normal",
-				t3Style: "normal"
+				t3Style: "normal",
+				t1Highlight: "transparent",
+				t1Color: "black",
+				t2Highlight: "transparent",
+				t2Color: "black",
+				t3Highlight: "transparent",
+				t3Color: "black"
 			},
 			templateGros: {
 				ref: "{ref}",
@@ -365,7 +375,7 @@ export default class App extends Component {
 							</Card>
 
 							<Card title="Étiquettes">
-								<div className="template-select">Template</div>
+								<div className="template-select">Modèle</div>
 								<Wrapper classes="flex template-select-container">
 									<select className="template" name="selectedTemplate" value={this.state.selectedTemplate} onChange={this.changeHandler}>
 										<option value="chaines">Chaines</option>
