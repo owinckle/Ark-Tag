@@ -64,7 +64,7 @@ export default class PDFView extends Component {
                     margin-bottom: 0px;
                 }
                 .tag .ref {
-                    font-weight: 500 !important;
+                    font-weight: 500;
                 }
                 .tag .label.highlight {
                     background: #ffff00;
@@ -118,34 +118,53 @@ export default class PDFView extends Component {
                 let t1 = data.t1.replace("{prix}", tags[i]["prices"][0].replace(".", ","));
                 let t2, t3;
                 t1 = t1.replace("{qty}", parseInt(tags[i]["quantities"][0]));
+
+                // Style
+                let t1Weight, t2Weight, t3Weight, refWeight, prodWeight;
+                t1Weight = data.t1Style == "gras" ? "600" : "400";
+                refWeight = data.refStyle == "gras" ? "600" : "400";
+                prodWeight = data.prodStyle == "gras" ? "600" : "400";
+
+                let t1Style = data.t1Style == "italique" ? "italic" : "normal";
+                let t2Style, t3Style, refStyle, prodStyle;
+                refStyle = data.refStyle == "italique" ? "italic" : "normal";
+                prodStyle = data.prodStyle == "italique" ? "italic" : "normal";
+
                 if(template != "lots") {
                     t2 = data.t2.replace("{prix}", tags[i]["prices"][1].replace(".", ","));
                     t3 = data.t3.replace("{prix}", tags[i]["prices"][2].replace(".", ","));
                     t2 = t2.replace("{qty}", parseInt(tags[i]["quantities"][1]));
                     t3 = t3.replace("{qty}", parseInt(tags[i]["quantities"][2]));
+
+                    // Style
+                    t2Weight = data.t2Style == "gras" ? "600" : "400";
+                    t3Weight = data.t3Style == "gras" ? "600" : "400";
+
+                    t2Style = data.t2Style == "italique" ? "italic" : "normal";
+                    t3Style = data.t3Style == "italique" ? "italic" : "normal";
                 }
 
                 if (template != "lots") {
                     tagList.push(
                         <div key={i + y} className={"tag " + this.props.template}>
-                            <div style={{ fontSize: data.refFont + "px" }} className="ref">{ref}</div>
-                            <div style={{ fontSize: data.prodFont + "px" }} className="name">{produit}</div>
+                            <div style={{ fontSize: data.refFont + "px", fontWeight: refWeight, fontStyle: refStyle, background: data.refHighlight, color: data.refColor }} className="ref">{ref}</div>
+                            <div style={{ fontSize: data.prodFont + "px", fontWeight: prodWeight, fontStyle: prodStyle, background: data.prodHighlight, color: data.prodColor }} className="name">{produit}</div>
                             <div>
-                                <div style={{ fontSize: data.labelFont + "px" }} className="label">{t1}</div>
-                                <div style={{ fontSize: data.labelFont + "px" }} className="label">{t2}</div>
-                                <div style={{ fontSize: data.labelFont + "px" }} className="label highlight">{t3}</div>
+                                <div style={{ fontSize: data.labelFont + "px", fontWeight: t1Weight, fontStyle: t1Style, background: data.t1Highlight, color: data.t1Color }} className="label">{t1}</div>
+                                <div style={{ fontSize: data.labelFont + "px", fontWeight: t2Weight, fontStyle: t2Style, background: data.t2Highlight, color: data.t2Color }} className="label">{t2}</div>
+                                <div style={{ fontSize: data.labelFont + "px", fontWeight: t3Weight, fontStyle: t3Style, background: data.t3Highlight, color: data.t3Color }} className="label highlight">{t3}</div>
                             </div>
                         </div>
                     );
                 } else {
                     tagList.push(
                         <div key={i + y} className={"tag " + this.props.template}>
-                            <div style={{ fontSize: data.refFont + "px" }} className="ref">{ref}</div>
+                            <div style={{ fontSize: data.refFont + "px", fontWeight: refWeight, fontStyle: refStyle, background: data.refHighlight, color: data.refColor }} className="ref">{ref}</div>
                             {produit != "" ?
-                                <div style={{ fontSize: data.prodFont + "px" }} className="name">{produit}</div>
+                                <div style={{ fontSize: data.prodFont + "px", fontWeight: prodWeight, fontStyle: prodStyle, background: data.prodHighlight, color: data.prodColor }} className="name">{produit}</div>
                             : null}
                             {t1 != "" ?
-                                <div style={{ fontSize: data.labelFont + "px", border: "1px solid transparent" }} className="label">{t1}</div>
+                                <div style={{ fontSize: data.labelFont + "px", border: "1px solid transparent", fontWeight: t1Weight, fontStyle: t1Style, background: data.t1Highlight, color: data.t1Color }} className="label">{t1}</div>
                             : null}
                         </div>
                     );

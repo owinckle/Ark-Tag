@@ -17,7 +17,6 @@
 	right: 0px;
 }
 
-
 .tags-container {
 	height: 29.8cm;
 	width: 21.1cm;
@@ -101,7 +100,7 @@
 }
 
 .tags-container .tag .ref {
-	font-weight: 600 !important;
+	font-weight: 600;
 }
 
 /* Chaines */

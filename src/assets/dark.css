@@ -2,7 +2,7 @@
 	--dark-primary: #12141d;
 	--dark-secondary: #20222e;
 	--dark-text: #f1f1f1;
-	--dark-paper: rgb(146, 146, 146);
+	--dark-paper: #fff;
 }
 
 .dark.wrapper {
@@ -16,7 +16,7 @@
     background: var(--dark-secondary);
 }
 
-.dark .card .title,
+.dark .card .card-head,
 .dark .card-table .head {
     border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
@@ -64,7 +64,8 @@
 	background: var(--dark-secondary);
 }
 
-.dark .modal .body input {
+.dark .modal .body input,
+.dark .modal .body select {
 	color: var(--dark-text);
 	border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -80,4 +81,8 @@
 
 .dark .title-bar .buttons .btn-container.close:hover {
 	background: var(--danger);
+}
+
+.dark .modal .separator {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

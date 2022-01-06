@@ -31,11 +31,15 @@ Bug fix:
 
 -------------------------------------------
 
-v.1.0.3
+v.1.1.0
 New:
+- Text color options
+- Text background options
+- Font style options (Bold, Normal, Italic)
 
 Changes:
 - Changed default price format €{prix} -> {prix} €
 - Default size for the reference on Bac and Gros -> +1 for Bac and +2 for Gros
 
-To add: message removal on similar tasks
+Bug fix:
+- Dark theme colors

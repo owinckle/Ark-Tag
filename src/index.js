@@ -374,7 +374,7 @@ export default class App extends Component {
 				<Wrapper classes={ this.state.darkMode ? "wrapper dark" : "wrapper"}>
 					<TitleBar title="El Etiquetor" favicon={favicon} />
 					<Navbar>	
-						<div>v1.0.2</div>
+						<div>v1.1.0</div>
 						<div className="icon-div">
 							{this.state.darkMode ? <DarkMode onClick={this.lightSwitch} /> : <LightMode onClick={this.lightSwitch} />}
 							<Upload onClick={ this.import } />

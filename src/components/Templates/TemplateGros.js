@@ -89,14 +89,16 @@ export default function TemplateGros(props) {
                         <option value="red">Rouge</option>
                         <option value="yellow">Jaune</option>
                         <option value="blue">Bleu</option>
-                        <option value="green">Green</option>
+                        <option value="green">Vert</option>
+                        <option value="gray">Gris</option>
                     </select>
                     <select value={refColor} onChange={(e) => setRefColor(e.target.value)}>
                         <option value="black">Texte</option>
                         <option value="red">Rouge</option>
                         <option value="yellow">Jaune</option>
                         <option value="blue">Bleu</option>
-                        <option value="green">Green</option>
+                        <option value="green">Vert</option>
+                        <option value="gray">Gris</option>
                     </select>
                     <div className="metric-container">
                         <input type="number" value={refFont} onChange={(e) => setRefFont(e.target.value)} />
@@ -121,14 +123,16 @@ export default function TemplateGros(props) {
                         <option value="red">Rouge</option>
                         <option value="yellow">Jaune</option>
                         <option value="blue">Bleu</option>
-                        <option value="green">Green</option>
+                        <option value="green">Vert</option>
+                        <option value="gray">Gris</option>
                     </select>
                     <select value={prodColor} onChange={(e) => setProdColor(e.target.value)}>
                         <option value="black">Texte</option>
                         <option value="red">Rouge</option>
                         <option value="yellow">Jaune</option>
                         <option value="blue">Bleu</option>
-                        <option value="green">Green</option>
+                        <option value="green">Vert</option>
+                        <option value="gray">Gris</option>
                     </select>
                     <div className="metric-container">
                         <input type="number" value={prodFont} onChange={(e) => setProdFont(e.target.value)} />
@@ -153,14 +157,16 @@ export default function TemplateGros(props) {
                         <option value="red">Rouge</option>
                         <option value="yellow">Jaune</option>
                         <option value="blue">Bleu</option>
-                        <option value="green">Green</option>
+                        <option value="green">Vert</option>
+                        <option value="gray">Gris</option>
                     </select>
                     <select value={t1Color} onChange={(e) => setT1Color(e.target.value)}>
                         <option value="black">Texte</option>
                         <option value="red">Rouge</option>
                         <option value="yellow">Jaune</option>
                         <option value="blue">Bleu</option>
-                        <option value="green">Green</option>
+                        <option value="green">Vert</option>
+                        <option value="gray">Gris</option>
                     </select>
                     <div className="metric-container">
                         <input type="number" value={t1Font} onChange={(e) => setT1Font(e.target.value)} />
@@ -185,14 +191,16 @@ export default function TemplateGros(props) {
                         <option value="red">Rouge</option>
                         <option value="yellow">Jaune</option>
                         <option value="blue">Bleu</option>
-                        <option value="green">Green</option>
+                        <option value="green">Vert</option>
+                        <option value="gray">Gris</option>
                     </select>
                     <select value={t2Color} onChange={(e) => setT2Color(e.target.value)}>
                         <option value="black">Texte</option>
                         <option value="red">Rouge</option>
                         <option value="yellow">Jaune</option>
                         <option value="blue">Bleu</option>
-                        <option value="green">Green</option>
+                        <option value="green">Vert</option>
+                        <option value="gray">Gris</option>
                     </select>
                     <div className="metric-container">
                         <input type="number" value={t2Font} onChange={(e) => setT2Font(e.target.value)} />
@@ -217,14 +225,16 @@ export default function TemplateGros(props) {
                         <option value="red">Rouge</option>
                         <option value="yellow">Jaune</option>
                         <option value="blue">Bleu</option>
-                        <option value="green">Green</option>
+                        <option value="green">Vert</option>
+                        <option value="gray">Gris</option>
                     </select>
                     <select value={t3Color} onChange={(e) => setT3Color(e.target.value)}>
                         <option value="black">Texte</option>
                         <option value="red">Rouge</option>
                         <option value="yellow">Jaune</option>
                         <option value="blue">Bleu</option>
-                        <option value="green">Green</option>
+                        <option value="green">Vert</option>
+                        <option value="gray">Gris</option>
                     </select>
                     <div className="metric-container">
                         <input type="number" value={t3Font} onChange={(e) => setT3Font(e.target.value)} />
@@ -232,8 +242,9 @@ export default function TemplateGros(props) {
                     </div>
                 </div>
                 {/* End Prix T3 */}
-                <DefaultButton label="Sauvegarder" action={save} />
             </div>
+            <div className="separator"></div>
+            <DefaultButton label="Sauvegarder" action={save} />
         </div>
     );
 }

@@ -65,8 +65,7 @@ input {
 	position: relative;
 	top: 85px;
 	width: calc(100% - 100px);
-	padding: 50px;
-	padding-bottom: 0px;
+	padding: 25px 50px;
 }
 
 .grid {
@@ -325,12 +324,19 @@ option {
 .modal {
 	width: 600px;
 	background: var(--secondary);
-	position: absolute;
+	position: fixed;
 	top: calc(50% + 30px);
 	left: 50%;
 	transform: translate(-50%, -50%);
 	box-shadow: var(--simple-boxshadow);
 	padding: 15px;
+	z-index: 999;
+}
+
+.modal .button {
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
 }
 
 .modal .header {
